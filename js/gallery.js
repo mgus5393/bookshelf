@@ -1,3 +1,7 @@
+// Global state
+let allBooks = [];
+let filteredBooks = [];
+
 // Load and display books
 async function loadBooks() {
     try {
@@ -5,20 +9,115 @@ async function loadBooks() {
         if (!response.ok) {
             throw new Error('Failed to load books');
         }
-        const books = await response.json();
-        displayBooks(books);
+        allBooks = await response.json();
+        filteredBooks = [...allBooks];
+        
+        populateFilters();
+        displayBooks(filteredBooks);
+        setupEventListeners();
     } catch (error) {
         console.error('Error loading books:', error);
-        document.querySelector('.books-grid').innerHTML = 
-            '<div class="empty-state"><h2>Unable to load books</h2><p>Please check your connection and try again.</p></div>';
+        const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
+        if (grid) {
+            grid.innerHTML = 
+                '<div class="empty-state"><h2>Unable to load books</h2><p>Please check your connection and try again.</p></div>';
+        }
+    }
+}
+
+// Populate filter dropdowns
+function populateFilters() {
+    const yearFilter = document.getElementById('yearFilter');
+    const genreFilter = document.getElementById('genreFilter');
+    
+    // Get unique years and genres
+    const years = [...new Set(allBooks.map(book => book.year_read).filter(y => y && y.trim()))].sort((a, b) => b - a);
+    const genres = [...new Set(allBooks.map(book => book.genre).filter(g => g && g.trim()))].sort();
+    
+    // Populate year filter
+    years.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearFilter.appendChild(option);
+    });
+    
+    // Populate genre filter
+    genres.forEach(genre => {
+        const option = document.createElement('option');
+        option.value = genre;
+        option.textContent = genre;
+        genreFilter.appendChild(option);
+    });
+}
+
+// Setup event listeners for search and filters
+function setupEventListeners() {
+    const searchInput = document.getElementById('searchInput');
+    const yearFilter = document.getElementById('yearFilter');
+    const genreFilter = document.getElementById('genreFilter');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            applyFilters();
+        }, 300);
+    });
+    
+    yearFilter.addEventListener('change', applyFilters);
+    genreFilter.addEventListener('change', applyFilters);
+    clearFiltersBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        yearFilter.value = '';
+        genreFilter.value = '';
+        applyFilters();
+    });
+}
+
+// Apply filters and search
+function applyFilters() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+    const selectedYear = document.getElementById('yearFilter').value;
+    const selectedGenre = document.getElementById('genreFilter').value;
+    
+    filteredBooks = allBooks.filter(book => {
+        // Search filter
+        const matchesSearch = !searchTerm || 
+            book.title.toLowerCase().includes(searchTerm) ||
+            (book.author && book.author.toLowerCase().includes(searchTerm));
+        
+        // Year filter
+        const matchesYear = !selectedYear || book.year_read === selectedYear;
+        
+        // Genre filter
+        const matchesGenre = !selectedGenre || book.genre === selectedGenre;
+        
+        return matchesSearch && matchesYear && matchesGenre;
+    });
+    
+    displayBooks(filteredBooks);
+    updateResultsCount();
+}
+
+// Update results count
+function updateResultsCount() {
+    const resultsCount = document.getElementById('resultsCount');
+    const count = filteredBooks.length;
+    if (count === allBooks.length) {
+        resultsCount.textContent = '';
+    } else {
+        resultsCount.textContent = `Showing ${count} of ${allBooks.length} books`;
     }
 }
 
 function displayBooks(books) {
-    const grid = document.querySelector('.books-grid');
+    const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
     
     if (!books || books.length === 0) {
-        grid.innerHTML = '<div class="empty-state"><h2>No books yet</h2><p>Start adding books to see them here!</p></div>';
+        grid.innerHTML = '<div class="empty-state"><h2>No books found</h2><p>Try adjusting your filters or search terms.</p></div>';
         return;
     }
 
@@ -29,42 +128,29 @@ function displayBooks(books) {
         return yearB - yearA;
     });
 
-    grid.innerHTML = sortedBooks.map((book, index) => `
-        <div class="book-card" data-book-index="${index}">
-            <div class="book-cover">
-                ${book.coverURL ? 
-                    `<img src="${escapeHtml(book.coverURL.replace('http://', 'https://'))}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${escapeHtml(book.title)}</span>';">` :
-                    `<span>${escapeHtml(book.title)}</span>`
-                }
+    grid.innerHTML = sortedBooks.map((book, index) => {
+        return `
+        <a href="book-detail.html?index=${index}" class="book-card-link">
+            <div class="book-card" data-book-index="${index}">
+                <div class="book-cover">
+                    ${book.coverURL ? 
+                        `<img src="${escapeHtml(book.coverURL.replace('http://', 'https://'))}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${escapeHtml(book.title)}</span>';">` :
+                        `<span>${escapeHtml(book.title)}</span>`
+                    }
+                </div>
+                <div class="book-info">
+                    <div class="book-title">${escapeHtml(book.title)}</div>
+                    <div class="book-author">${escapeHtml(book.author || 'Unknown Author')}</div>
+                    ${book.year_read ? `<div class="book-date">Read: ${book.year_read}</div>` : ''}
+                    ${book.rating ? `<div class="book-rating">⭐ ${book.rating}</div>` : ''}
+                </div>
             </div>
-            <div class="book-info">
-                <div class="book-title">${escapeHtml(book.title)}</div>
-                <div class="book-author">${escapeHtml(book.author || 'Unknown Author')}</div>
-                ${book.year_read ? `<div class="book-date">Read: ${book.year_read}</div>` : ''}
-                ${book.rating ? `<div class="book-rating">⭐ ${book.rating}</div>` : ''}
-            </div>
-        </div>
-    `).join('');
+        </a>
+        `;
+    }).join('');
 
-    // Add click handlers to book cards
-    grid.querySelectorAll('.book-card').forEach((card, index) => {
-        card.addEventListener('click', () => {
-            showBookDetails(sortedBooks[index]);
-        });
-    });
-}
-
-function showBookDetails(book) {
-    const details = `
-Title: ${book.title}\n
-Author: ${book.author || 'Unknown'}\n
-${book.published_year ? `Published: ${book.published_year}\n` : ''}
-${book.genre ? `Genre: ${book.genre}\n` : ''}
-${book.year_read ? `Year Read: ${book.year_read}\n` : ''}
-${book.rating ? `Rating: ⭐ ${book.rating}\n` : ''}
-    `.trim();
-    
-    alert(details);
+    // Store book data for detail page navigation
+    window.sortedBooks = sortedBooks;
 }
 
 function escapeHtml(text) {

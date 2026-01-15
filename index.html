@@ -17,6 +17,25 @@
 
     <div class="container">
         <h2 style="margin-bottom: 1rem;">Books Read</h2>
+        
+        <!-- Search and Filters -->
+        <div class="filters-container">
+            <div class="search-box-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search books by title or author...">
+            </div>
+            <div class="filter-controls">
+                <select id="yearFilter" class="filter-select">
+                    <option value="">All Years</option>
+                </select>
+                <select id="genreFilter" class="filter-select">
+                    <option value="">All Genres</option>
+                </select>
+                <button id="clearFilters" class="clear-filters-btn">Clear Filters</button>
+            </div>
+        </div>
+        
+        <div id="resultsCount" class="results-count"></div>
+        
         <div class="books-grid" id="booksGrid">
             <!-- Books will be loaded here -->
         </div>

@@ -1,1 +1,1523 @@
-[]
+[
+    {
+      "title": "Fourth Wing",
+      "author": "Rebecca Yarros",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=JHfWEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Lessons in Chemistry",
+      "author": "Bonnie Garmus",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Ayk3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Quietly Hostile",
+      "author": "Samantha Irby",
+      "published_year": 2023,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=kTOOEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Everythings Fine",
+      "author": "Cecilia Rabess",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=k1KUEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Remarkably Bright Creatures",
+      "author": "Shelby Van Pelt",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=g0Q7EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "A Special Place for Women",
+      "author": "Laura Hankin",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=8LJsEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Celebrants",
+      "author": "Steven Rowley",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Rj2H0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "On Earth, Were Briefly Gorgeous",
+      "author": "Ocean Vuong",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=tLyWDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Breakaway",
+      "author": "Jennifer Weiner",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=bb0AEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Iron Flame",
+      "author": "Rebecca Yarros",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=xIS9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Come and Get It",
+      "author": "Kiley Reid",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=aDi4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Not Impossible",
+      "author": "Mick Ebeling",
+      "published_year": 2017,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=VW8IDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "I Feel Bad About My Neck",
+      "author": "Nora Ephron",
+      "published_year": 2008,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=rbbw0rPr3EoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Burn book",
+      "author": "Kara Swisher",
+      "published_year": 2024,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=Fcj3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Who we are now",
+      "author": "Lauryn Chamberlain",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Ke6aEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Why Simple Wins",
+      "author": "Lisa Bodell",
+      "published_year": 2016,
+      "genre": "Business & Economics",
+      "coverURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RvWa1YTwhu-HPoNGjAuFIR5_Xb8RhJmqbST-nkPYBCoe_AoQwRs_kaQJMcmkWe_4TUrPMOLMYDDYxg1vBhUBkapjuCrAcKFv3J6MnntNuA&s=10",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The love affair of Nathaniel P",
+      "author": "Adelle Waldman",
+      "published_year": 2014,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=EjJFAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Big magic",
+      "author": "Elizabeth Gilbert",
+      "published_year": 2015,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=q0LZCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Funny story",
+      "author": "Emily Henry",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Nb7UEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Husbands",
+      "author": "Holly Gramazio",
+      "published_year": 2025,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=i0ez0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Jackpot summer",
+      "author": "Elyssa Friedland",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=QUnWEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The last romantics",
+      "author": "Tara Conklin",
+      "published_year": 2019,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=hDZeDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Good material",
+      "author": "Dolly Alderton",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=cCHWEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The perfect marriage",
+      "author": "Jeneva Rose",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=mIo8EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Mindfulness for beginners",
+      "author": "JON. KABAT ZINN",
+      "published_year": 2017,
+      "genre": "Unknown Genre",
+      "coverURL": "http://books.google.com/books/content?id=Ogk7DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Nosy neighbors",
+      "author": "Freya Sampson",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Mx7JEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Just for the summer",
+      "author": "Abby Jimenez",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=17HPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The midnight feast",
+      "author": "Sandra Iversen",
+      "published_year": 1998,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=wyE70AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Summer romance",
+      "author": "Annabel Monaghan",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=IgHVEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Weyward",
+      "author": "Emilia Hart",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=rodrEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The wedding people",
+      "author": "Alison Espach",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=DcD9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Little Weirds",
+      "author": "Jenny Slate",
+      "published_year": 2019,
+      "genre": "Literary Collections",
+      "coverURL": "http://books.google.com/books/content?id=roKLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Part of your world",
+      "author": "Abby Jimenez",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "https://books.google.com/books/content?id=MU07EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "By Any Other Name",
+      "author": "Jodi Picoult",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=JaDxEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Yours Truly",
+      "author": "Abby Jimenez",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=2URTzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "This summer will be different",
+      "author": "Carley Fortune",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=XnbSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "This time tomorrow",
+      "author": "Emma Straub",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=eJ2OEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The making of a manger",
+      "author": "Julie Zhuo",
+      "published_year": 2019,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=etCIDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "When: the scientific secrets of perfect timing",
+      "author": "Daniel H. Pink",
+      "published_year": 2019,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=EJ9-DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Dinners with Ruth",
+      "author": "Nina Totenberg",
+      "published_year": 2022,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=RgBfEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Atlas of the Heart",
+      "author": "Brené Brown",
+      "published_year": 2021,
+      "genre": "Psychology",
+      "coverURL": "http://books.google.com/books/content?id=ZvwyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Last Mrs Parrish",
+      "author": "Liv Constantine",
+      "published_year": 2017,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=zt8sDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The wreckage of my presence",
+      "author": "Casey Wilson",
+      "published_year": 2021,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=ClL1DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Friends, lovers, and the big terrible thing",
+      "author": "Matthew Perry",
+      "published_year": 2022,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=IiRPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Killers of the flower moon",
+      "author": "David Grann",
+      "published_year": 2017,
+      "genre": "True Crime",
+      "coverURL": "http://books.google.com/books/content?id=3IC7CwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Carrie Soto is Back",
+      "author": "Taylor Jenkins Reid",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=75RfEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The light we carry",
+      "author": "Michelle Obama",
+      "published_year": 2024,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=o8r3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Crying in H Mart",
+      "author": "Michelle Zauner",
+      "published_year": 2021,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=30UlEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Convenience store woman",
+      "author": "Sayaka Murata",
+      "published_year": 2018,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=cDpDDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The soulmate equation",
+      "author": "Christina Lauren",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=e4IqEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "All adults here",
+      "author": "Emma Straub",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=kHK0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "It ends with us",
+      "author": "Colleen Hoover",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=wmnuDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Pineapple street",
+      "author": "Jenny Jackson",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=sMxzEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Keep moving",
+      "author": "Maggie Smith",
+      "published_year": 2020,
+      "genre": "Self-Help",
+      "coverURL": "http://books.google.com/books/content?id=YQ22DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Really good actually",
+      "author": "Monica Heisey",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=I8hrEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Hello beautiful",
+      "author": "Ann Napolitano",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=J7Z9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Cant look away",
+      "author": "Carola Lovering",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=O689EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Tomorrow and tomorrow and tomorrow",
+      "author": "Gabrielle Zevin",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=LML4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Bad summer people",
+      "author": "Emma Rosenblum",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=gmGBEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Disability visibility",
+      "author": "Alice Wong",
+      "published_year": 2021,
+      "genre": "Young Adult Nonfiction",
+      "coverURL": "http://books.google.com/books/content?id=HOcXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "It starts with us",
+      "author": "Colleen Hoover",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=CMeVEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "What happened to Ruthy Ramirez",
+      "author": "Claire Jimenez",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=OMB4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The secrets we kept",
+      "author": "Lara Prescott",
+      "published_year": 2019,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Fx6BDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "You could make this place beautiful",
+      "author": "Maggie Smith",
+      "published_year": 2023,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=A7CzEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "I have some questions for you",
+      "author": "Rebecca Makkai",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=5JLkEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Happy place",
+      "author": "Emily Henry",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=EObnEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Half Moon",
+      "author": "Mary Beth Keane",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=6IG3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "One Italian summer",
+      "author": "Rebecca Serle",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=MTNcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Tom Lake",
+      "author": "Ann Patchett",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=18OYEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Yellowface",
+      "author": "R.F. Kuang",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "https://books.google.com/books/content?id=iJPhEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Looking for Jane",
+      "author": "Heather Marshall",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=MzNcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Lucy by the sea",
+      "author": "Elizabeth Strout",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=jr_BEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Beyond the Pill",
+      "author": "Jolene Brighten",
+      "published_year": 2019,
+      "genre": "Health & Fitness",
+      "coverURL": "http://books.google.com/books/content?id=ontbDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The book of delights",
+      "author": "Ross Gay",
+      "published_year": 2023,
+      "genre": "Literary Collections",
+      "coverURL": "http://books.google.com/books/content?id=XL-mEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Maame",
+      "author": "Jessica George",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=7tdiEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Dare to lead",
+      "author": "Brené Brown",
+      "published_year": 2018,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=oFhbDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The portfolio life",
+      "author": "Christina Wallace",
+      "published_year": 2023,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=GGtgzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Dear Edward",
+      "author": "Ann Napolitano",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Pe8kEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Good company",
+      "author": "Grace Bonney",
+      "published_year": 2018,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=T4tSDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Plot",
+      "author": "Jean Hanff Korelitz",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=zST-DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Note to Self",
+      "author": "Gayle King",
+      "published_year": 2019,
+      "genre": "Self-Help",
+      "coverURL": "http://books.google.com/books/content?id=sPuPDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Educated",
+      "author": "Tara Westover",
+      "published_year": 2018,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=2ObWDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Eligible",
+      "author": "Curtis Sittenfeld",
+      "published_year": 2016,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=CD02rgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Taste: My life through food",
+      "author": "Stanley Tucci",
+      "published_year": 2021,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=yoZGEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Going there",
+      "author": "Katie Couric",
+      "published_year": 2021,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=f2UtEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Jetsetters",
+      "author": "Amanda Eyre Ward",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Ge8kEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "You think it, Ill say it",
+      "author": "Curtis Sittenfeld",
+      "published_year": 2019,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=f8GGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "How to be perfect: the answer to every moral question",
+      "author": "Michael Schur",
+      "published_year": 2022,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=TOBWEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Lying Game",
+      "author": "Ruth Ware",
+      "published_year": 2017,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=kzktDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Better not perfect",
+      "author": "Max H. Bazerman",
+      "published_year": 2020,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=74_CDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The guest list",
+      "author": "Lucy Foley",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=ibioDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Everything I know about love",
+      "author": "Dolly Alderton",
+      "published_year": 2020,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=zFSaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The power of fun how to feel alive again",
+      "author": "Catherine Price",
+      "published_year": 2021,
+      "genre": "Self-Help",
+      "coverURL": "http://books.google.com/books/content?id=ZgclEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "People we meet on vacation",
+      "author": "Emily Henry",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=5fooEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Special characters",
+      "author": "Laurie Segall",
+      "published_year": 2022,
+      "genre": "Biography & Autobiography",
+      "coverURL": "https://books.google.com/books/content?id=6rEGEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Seven days in June",
+      "author": "Tia Williams",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=JiQBEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Finding me",
+      "author": "Viola Davis",
+      "published_year": 2022,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=sVfBzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Verity",
+      "author": "Colleen Hoover",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=csvuzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Pay Up: the future of women and work",
+      "author": "Reshma Saujani",
+      "published_year": 2022,
+      "genre": "Political Science",
+      "coverURL": "http://books.google.com/books/content?id=Klg1EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The startup wife",
+      "author": "Tahmima Anam",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Al0zEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Body Talk",
+      "author": "Katie Sturino",
+      "published_year": 2021,
+      "genre": "Self-Help",
+      "coverURL": "http://books.google.com/books/content?id=8mIrEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Commonwealth",
+      "author": "Ann Patchett",
+      "published_year": 2016,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=OhswCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Meant to be mine",
+      "author": "Hannah Orenstein",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=nt9IEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The book of delights",
+      "author": "Ross Gay",
+      "published_year": 2023,
+      "genre": "Literary Collections",
+      "coverURL": "http://books.google.com/books/content?id=XL-mEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Golden girl",
+      "author": "Erica Orloff",
+      "published_year": 2005,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=kCVZ98OCnhMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Counterfeit",
+      "author": "Tim Phillips",
+      "published_year": 2007,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=90ugkKjBu6IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Winter Street",
+      "author": "Elin Hilderbrand",
+      "published_year": 2014,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=89gNAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Vladimir",
+      "author": "Julia May Jonas",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=rGCmEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The secrets you keep",
+      "author": "Kate White",
+      "published_year": 2017,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=o_wwDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The seven husbands of Evelyn Hugo",
+      "author": "Taylor Jenkins Reid",
+      "published_year": 2017,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=IdAmDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Book Lovers",
+      "author": "Emily Henry",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=gF8uBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Every Summer After",
+      "author": "Carley Fortune",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=nDCTEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The comfort book",
+      "author": "Matt Haig",
+      "published_year": 2022,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=kLeTzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Braving the wilderness",
+      "author": "Brené Brown",
+      "published_year": 2019,
+      "genre": "Belonging (Social psychology)",
+      "coverURL": "http://books.google.com/books/content?id=KIPkAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Cult Classic",
+      "author": "Sloane Crosley",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Tqk9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Paris Apartment",
+      "author": "Lucy Foley",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=rCU3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "A hundred other girls",
+      "author": "Iman Hariri-Kia",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=bnI9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Club",
+      "author": "Jane Heller",
+      "published_year": 2001,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=stEHODtd7aMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The worlds worst assistant",
+      "author": "Sona Movsesian",
+      "published_year": 2022,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=tyxJEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Anxious People",
+      "author": "Fredrik Backman",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Zj8yEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Hana Khan Carries on",
+      "author": "Uzma Jalaluddin",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Shf-DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Trick mirror",
+      "author": "Jia Tolentino",
+      "published_year": 2019,
+      "genre": "Literary Collections",
+      "coverURL": "http://books.google.com/books/content?id=-uV8DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "What kind of Woman",
+      "author": "Kate Baer",
+      "published_year": 2020,
+      "genre": "Poetry",
+      "coverURL": "http://books.google.com/books/content?id=av_NDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Imposter syndrome",
+      "author": "John Campbell",
+      "published_year": 101,
+      "genre": "Psychology",
+      "coverURL": "http://books.google.com/books/content?id=RJsFEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The midnight library",
+      "author": "Matt Haig",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=ho-rEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Invisible women",
+      "author": "Caroline Criado Perez",
+      "published_year": 2019,
+      "genre": "Computers",
+      "coverURL": "http://books.google.com/books/content?id=GdmEDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The lost apothecary",
+      "author": "Sarah Penner",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=eTzeDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The mind of the leader",
+      "author": "Rasmus Hougaard, Jacqueline Carter",
+      "published_year": 2018,
+      "genre": "Psychology",
+      "coverURL": "http://books.google.com/books/content?id=ZSE6DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Milk fed",
+      "author": "Melissa Broder",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=GPztDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Island",
+      "author": "Elin Hilderbrand",
+      "published_year": 2010,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=Esr4fKWU27AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The woman in cabin 10",
+      "author": "Ruth Ware",
+      "published_year": 2016,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=r-upDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The perfect couple",
+      "author": "Elin Hilderbrand",
+      "published_year": 2018,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=hR44DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Klara and the sun",
+      "author": "Kazuo Ishiguro",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=S7jrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Eat a peach",
+      "author": "David Chang",
+      "published_year": 2022,
+      "genre": "Biography & Autobiography",
+      "coverURL": "https://books.google.com/books/content?id=TrJsEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Here for it",
+      "author": "R. Eric Thomas",
+      "published_year": 2021,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=25jLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The truths we hold",
+      "author": "Kamala Harris",
+      "published_year": 2019,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=dN6DDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Here all along",
+      "author": "Sarah Hurwitz",
+      "published_year": 2019,
+      "genre": "Religion",
+      "coverURL": "http://books.google.com/books/content?id=LS9-DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The blue bistro",
+      "author": "Elin Hilderbrand",
+      "published_year": 2010,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=MsnVwKldgBwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Where the crawdads sing",
+      "author": "Delia Owens",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=neUlEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Boston girl",
+      "author": "Anita Diamant",
+      "published_year": 2014,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=0HanBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Shit, Actually",
+      "author": "Lindy West",
+      "published_year": 2020,
+      "genre": "Humor",
+      "coverURL": "http://books.google.com/books/content?id=ZVjODwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Extreme ownership",
+      "author": "Jocko Willink, Leif Babin",
+      "published_year": 2015,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=Hv-5BwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Caste",
+      "author": "Isabel Wilkerson",
+      "published_year": 2020,
+      "genre": "Social Science",
+      "coverURL": "http://books.google.com/books/content?id=_er2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Cobble hill",
+      "author": "Cecily von Ziegesar",
+      "published_year": 2021,
+      "genre": "Unknown Genre",
+      "coverURL": "http://books.google.com/books/content?id=qN72zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "My own words",
+      "author": "Ruth Bader Ginsburg, Mary Hartnett, Wendy W. Williams, Wendy Williams (Writer on law)",
+      "published_year": 2016,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=nXsmDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "No filter",
+      "author": "Sarah Frier",
+      "published_year": 2021,
+      "genre": "Business & Economics",
+      "coverURL": "http://books.google.com/books/content?id=eDFAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "One to watch",
+      "author": "Kate Stayman-London",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=ZJLqDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Maybe You Should Talk to Someone",
+      "author": "Lori Gottlieb",
+      "published_year": 2019,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Land of Milk and Honey",
+      "author": "C Pam Zhang",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=18urEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Social Engagement",
+      "author": "Avery Carpenter Forrey",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=-VuGEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Sandwich",
+      "author": "Catherine Newman",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=d73XEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The It Girl",
+      "author": "Ruth Ware",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=JBx1EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Winner",
+      "author": "Teddy Wayne",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=ryTQEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Margo's Got Money Troubles",
+      "author": "Rufi Thorpe",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=dsHWEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "By the Book (a Meant to Be Novel)",
+      "author": "Jasmine Guillory",
+      "published_year": 2022,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=esijzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Memorial",
+      "author": "Bryan Washington",
+      "published_year": 2021,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=m_JEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Memo",
+      "author": "Lauren Mechling, Rachel Dodes",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=lTYp0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Black Friend",
+      "author": "Ziwe",
+      "published_year": 2023,
+      "genre": "Social Science",
+      "coverURL": "http://books.google.com/books/content?id=vbwdEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Romantic Comedy: Reese's Book Club",
+      "author": "Curtis Sittenfeld",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=dMeJEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Group",
+      "author": "Christie Tate",
+      "published_year": 2020,
+      "genre": "Biography & Autobiography",
+      "coverURL": "http://books.google.com/books/content?id=Ff__DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "All About Love",
+      "author": "bell hooks",
+      "published_year": 2001,
+      "genre": "Family & Relationships",
+      "coverURL": "http://books.google.com/books/content?id=MYim_gaQC2gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Lady Tan's Circle of Women",
+      "author": "Lisa See",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=BnkIEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Very Bad Company",
+      "author": "Emma Rosenblum",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=_pHXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "Zero Days",
+      "author": "Ruth Ware",
+      "published_year": 2023,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=5ErAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "A Novel Love Story",
+      "author": "Ashley Poston",
+      "published_year": 2024,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=aN_YEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "The Boy, the Mole, the Fox and the Horse",
+      "author": "Charlie Mackesy",
+      "published_year": 2019,
+      "genre": "Unknown Genre",
+      "coverURL": "http://books.google.com/books/content?id=fX7hwQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "A Court of Thorns and Roses",
+      "author": "Sarah J. Maas",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=VswAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "A Court of Mist and Fury",
+      "author": "Sarah J. Maas",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=ZMwAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    },
+    {
+      "title": "A Court of Wings and Ruin",
+      "author": "Sarah J. Maas",
+      "published_year": 2020,
+      "genre": "Fiction",
+      "coverURL": "http://books.google.com/books/content?id=ZswAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "year_read": "",
+      "rating": ""
+    }
+  ]

@@ -64,6 +64,8 @@ function displaySearchResults(books) {
         const authors = volumeInfo.authors?.join(', ') || 'Unknown Author';
         const description = volumeInfo.description || '';
         const publishedDate = volumeInfo.publishedDate || '';
+        const publishedYear = publishedDate ? parseInt(publishedDate.substring(0, 4)) : null;
+        const genre = volumeInfo.categories?.[0] || 'Unknown Genre';
 
         return `
             <div class="search-result-item">
@@ -71,7 +73,8 @@ function displaySearchResults(books) {
                 <div class="search-result-info">
                     <h3>${escapeHtml(title)}</h3>
                     <p><strong>Author:</strong> ${escapeHtml(authors)}</p>
-                    ${publishedDate ? `<p><strong>Published:</strong> ${publishedDate}</p>` : ''}
+                    ${publishedYear ? `<p><strong>Published:</strong> ${publishedYear}</p>` : ''}
+                    ${genre ? `<p><strong>Genre:</strong> ${escapeHtml(genre)}</p>` : ''}
                     ${description ? `<p>${escapeHtml(description.substring(0, 150))}...</p>` : ''}
                     <button class="add-book-btn" data-book-index="${index}">
                         Add Book
@@ -88,14 +91,16 @@ function displaySearchResults(books) {
             const book = currentSearchResults[index];
             const volumeInfo = book.volumeInfo;
             const coverImage = volumeInfo.imageLinks?.thumbnail || volumeInfo.imageLinks?.smallThumbnail || '';
+            const publishedDate = volumeInfo.publishedDate || '';
+            const publishedYear = publishedDate ? parseInt(publishedDate.substring(0, 4)) : null;
+            const genre = volumeInfo.categories?.[0] || 'Unknown Genre';
             
             const bookData = {
                 title: volumeInfo.title || 'Unknown Title',
                 author: volumeInfo.authors?.join(', ') || 'Unknown Author',
-                coverImage: coverImage.replace('http://', 'https://'),
-                description: volumeInfo.description || '',
-                publishedDate: volumeInfo.publishedDate || '',
-                googleBooksId: book.id
+                coverURL: coverImage.replace('http://', 'https://'),
+                published_year: publishedYear,
+                genre: genre
             };
             
             addBook(bookData);
@@ -105,18 +110,22 @@ function displaySearchResults(books) {
 
 // Add book to collection
 async function addBook(bookData) {
-    // Get date finished from user
-    const dateFinished = prompt('Enter the date you finished reading this book (YYYY-MM-DD) or leave blank:', 
-        new Date().toISOString().split('T')[0]);
+    // Get year read from user
+    const currentYear = new Date().getFullYear();
+    const yearRead = prompt(`Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`, 
+        currentYear.toString());
     
-    if (dateFinished === null) {
+    if (yearRead === null) {
         return; // User cancelled
     }
 
+    // Get rating (optional)
+    const rating = prompt('Enter your rating (1-5) or leave blank:', '');
+
     const bookToSave = {
         ...bookData,
-        dateFinished: dateFinished || new Date().toISOString().split('T')[0],
-        addedAt: new Date().toISOString()
+        year_read: yearRead && yearRead.trim() ? yearRead.trim() : '',
+        rating: rating && rating.trim() ? rating.trim() : ''
     };
 
     try {

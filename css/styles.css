@@ -127,6 +127,12 @@ header nav a:hover {
     color: #999;
 }
 
+.book-rating {
+    font-size: 0.75rem;
+    color: #f39c12;
+    margin-top: 0.25rem;
+}
+
 /* Search Page */
 .search-container {
     max-width: 800px;

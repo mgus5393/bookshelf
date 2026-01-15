@@ -22,25 +22,26 @@ function displayBooks(books) {
         return;
     }
 
-    // Sort books by date finished (newest first)
+    // Sort books by year_read (newest first), then by published_year
     const sortedBooks = [...books].sort((a, b) => {
-        const dateA = new Date(a.dateFinished || 0);
-        const dateB = new Date(b.dateFinished || 0);
-        return dateB - dateA;
+        const yearA = a.year_read ? parseInt(a.year_read) : (a.published_year || 0);
+        const yearB = b.year_read ? parseInt(b.year_read) : (b.published_year || 0);
+        return yearB - yearA;
     });
 
     grid.innerHTML = sortedBooks.map((book, index) => `
         <div class="book-card" data-book-index="${index}">
             <div class="book-cover">
-                ${book.coverImage ? 
-                    `<img src="${escapeHtml(book.coverImage)}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${escapeHtml(book.title)}</span>';">` :
+                ${book.coverURL ? 
+                    `<img src="${escapeHtml(book.coverURL.replace('http://', 'https://'))}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${escapeHtml(book.title)}</span>';">` :
                     `<span>${escapeHtml(book.title)}</span>`
                 }
             </div>
             <div class="book-info">
                 <div class="book-title">${escapeHtml(book.title)}</div>
                 <div class="book-author">${escapeHtml(book.author || 'Unknown Author')}</div>
-                ${book.dateFinished ? `<div class="book-date">Finished: ${formatDate(book.dateFinished)}</div>` : ''}
+                ${book.year_read ? `<div class="book-date">Read: ${book.year_read}</div>` : ''}
+                ${book.rating ? `<div class="book-rating">⭐ ${book.rating}</div>` : ''}
             </div>
         </div>
     `).join('');
@@ -57,17 +58,13 @@ function showBookDetails(book) {
     const details = `
 Title: ${book.title}\n
 Author: ${book.author || 'Unknown'}\n
-${book.dateFinished ? `Finished: ${formatDate(book.dateFinished)}\n` : ''}
-${book.description ? `\nDescription:\n${book.description.substring(0, 200)}...` : ''}
+${book.published_year ? `Published: ${book.published_year}\n` : ''}
+${book.genre ? `Genre: ${book.genre}\n` : ''}
+${book.year_read ? `Year Read: ${book.year_read}\n` : ''}
+${book.rating ? `Rating: ⭐ ${book.rating}\n` : ''}
     `.trim();
     
     alert(details);
-}
-
-function formatDate(dateString) {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 function escapeHtml(text) {

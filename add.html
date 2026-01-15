@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book - Bookshelf</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Bookshelf</h1>
+        <nav>
+            <a href="index.html">Gallery</a>
+            <a href="add.html">Add Book</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <h2 style="margin-bottom: 1rem;">Add a New Book</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Search for books using the Google Books API</p>
+            
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search for a book by title, author, or ISBN..."
+                    autocomplete="off"
+                >
+                <button id="searchBtn">Search</button>
+            </div>
+
+            <div id="searchResults">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/add-book.js"></script>
+</body>
+</html>

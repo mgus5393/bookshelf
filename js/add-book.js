@@ -152,20 +152,19 @@ function displaySearchResults(books) {
 // }
 
 async function addBook(bookData) {
+    // Get year read from user
     const currentYear = new Date().getFullYear();
     const yearRead = prompt(
-        `Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`, 
+        `Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`,
         currentYear.toString()
     );
 
     if (yearRead === null) return; // User cancelled
 
-    // Assign _id for consistency
-    const _id = `book-${Date.now()}`; // simple unique ID based on timestamp
-
+    // Generate a unique ID for the new book
     const bookToSave = {
         ...bookData,
-        _id,
+        _id: `book-${Date.now()}`, // unique string ID
         year_read: yearRead && yearRead.trim() ? yearRead.trim() : ''
     };
 
@@ -182,11 +181,6 @@ async function addBook(bookData) {
 
         if (response.ok) {
             showMessage('Book added successfully!', 'success');
-
-            // Add the new book to the local arrays to update gallery immediately
-            allBooks.push(bookToSave);
-            filteredBooks.push(bookToSave);
-            displayBooks(filteredBooks);
 
             // Clear search after a moment
             setTimeout(() => {

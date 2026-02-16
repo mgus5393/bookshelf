@@ -1548,5 +1548,15 @@
     "_id": "book-1771258281103",
     "year_read": "2026",
     "order": 175
+  },
+  {
+    "title": "An Experimental Method for the Discovery and Development of Tests of Character",
+    "author": "Theodore Ferdinand Lentz",
+    "coverURL": "https://books.google.com/books/content?id=MrygAAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "published_year": 1925,
+    "genre": "Character",
+    "_id": "book-1771258746624",
+    "year_read": "2026",
+    "order": 176
   }
 ]

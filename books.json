@@ -1528,35 +1528,5 @@
     "genre": "Biography & Autobiography",
     "coverURL": "http://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     "year read": 2025
-  },
-  {
-    "title": "Web Security Testing Cookbook",
-    "author": "Paco Hope, Ben Walther",
-    "coverURL": "https://books.google.com/books/content?id=VmrSJ3V-s_MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "published_year": 2008,
-    "genre": "Computers",
-    "_id": "book-1771258268713",
-    "year_read": "2026",
-    "order": 174
-  },
-  {
-    "title": "Handbook of Special Tests in Musculoskeletal Examination E-Book",
-    "author": "Paul Hattam, Alison Smeatham",
-    "coverURL": "https://books.google.com/books/content?id=qOjkDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "published_year": 2020,
-    "genre": "Medical",
-    "_id": "book-1771258281103",
-    "year_read": "2026",
-    "order": 175
-  },
-  {
-    "title": "An Experimental Method for the Discovery and Development of Tests of Character",
-    "author": "Theodore Ferdinand Lentz",
-    "coverURL": "https://books.google.com/books/content?id=MrygAAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "published_year": 1925,
-    "genre": "Character",
-    "_id": "book-1771258746624",
-    "year_read": "2026",
-    "order": 176
   }
 ]

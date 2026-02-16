@@ -1528,14 +1528,5 @@
     "genre": "Biography & Autobiography",
     "coverURL": "http://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     "year read": 2025
-  },
-  {
-    "title": "Handbook of Special Tests in Musculoskeletal Examination E-Book",
-    "author": "Paul Hattam, Alison Smeatham",
-    "coverURL": "https://books.google.com/books/content?id=qOjkDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "published_year": 2020,
-    "genre": "Medical",
-    "year_read": "2026",
-    "order": 174
   }
 ]

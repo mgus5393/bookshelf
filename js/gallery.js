@@ -3,27 +3,55 @@ let allBooks = [];
 let filteredBooks = [];
 
 // Load and display books
+// async function loadBooks() {
+//     try {
+//         const response = await fetch('books.json');
+//         if (!response.ok) {
+//             throw new Error('Failed to load books');
+//         }
+//         allBooks = await response.json();
+//         filteredBooks = [...allBooks];
+        
+//         populateFilters();
+//         applyFilters(); // will call displayBooks + count
+//         setupEventListeners();
+//     } catch (error) {
+//         console.error('Error loading books:', error);
+//         const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
+//         if (grid) {
+//             grid.innerHTML = 
+//                 '<div class="empty-state"><h2>Unable to load books</h2><p>Please check your connection and try again.</p></div>';
+//         }
+//     }
+// }
 async function loadBooks() {
     try {
         const response = await fetch('books.json');
-        if (!response.ok) {
-            throw new Error('Failed to load books');
-        }
+        if (!response.ok) throw new Error('Failed to load books');
+
         allBooks = await response.json();
+
+        // Assign unique ID if it doesn't exist
+        allBooks = allBooks.map((book, i) => ({
+            ...book,
+            _id: book._id ?? `book-${i+1}` // string id
+        }));
+
         filteredBooks = [...allBooks];
-        
+
         populateFilters();
-        applyFilters(); // will call displayBooks + count
+        applyFilters();
         setupEventListeners();
     } catch (error) {
         console.error('Error loading books:', error);
         const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
         if (grid) {
-            grid.innerHTML = 
+            grid.innerHTML =
                 '<div class="empty-state"><h2>Unable to load books</h2><p>Please check your connection and try again.</p></div>';
         }
     }
 }
+
 
 // Helper to normalize fields from both old and new schemas
 function getYearRead(book) {
@@ -148,9 +176,53 @@ function updateResultsCount() {
     }
 }
 
+// function displayBooks(books) {
+//     const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
+    
+//     if (!grid) return;
+
+//     if (!books || books.length === 0) {
+//         grid.innerHTML = '<div class="empty-state"><h2>No books found</h2><p>Try adjusting your filters or search terms.</p></div>';
+//         return;
+//     }
+
+//     // Sort books by order (newest/highest first). Fallback: year_read/published year.
+//     const sortedBooks = [...books].sort((a, b) => {
+//         const orderA = getOrder(a);
+//         const orderB = getOrder(b);
+//         if (orderA !== orderB) {
+//             return orderB - orderA; // higher order = newer
+//         }
+
+//         const yearA = parseInt(getYearRead(a)) || getPublishedYear(a);
+//         const yearB = parseInt(getYearRead(b)) || getPublishedYear(b);
+//         return yearB - yearA;
+//     });
+
+//     grid.innerHTML = sortedBooks.map((book, index) => {
+//         const yearRead = getYearRead(book);
+//         return `
+//         <a href="book-detail.html?index=${index}" class="book-card-link">
+//             <div class="book-card" data-book-index="${index}">
+//                 <div class="book-cover">
+//                     ${book.coverURL ? 
+//                         `<img src="${escapeHtml(book.coverURL.replace('http://', 'https://'))}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${escapeHtml(book.title)}</span>';">` :
+//                         `<span>${escapeHtml(book.title)}</span>`
+//                     }
+//                 </div>
+//                 <div class="book-info">
+//                     <div class="book-title">${escapeHtml(book.title)}</div>
+//                     <div class="book-author">${escapeHtml(book.author || 'Unknown Author')}</div>
+//                     ${yearRead ? `<div class="book-date">Read: ${escapeHtml(yearRead)}</div>` : ''}
+//                 </div>
+//             </div>
+//         </a>
+//         `;
+//     }).join('');
+// }
+
 function displayBooks(books) {
     const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
-    
     if (!grid) return;
 
     if (!books || books.length === 0) {
@@ -158,26 +230,23 @@ function displayBooks(books) {
         return;
     }
 
-    // Sort books by order (newest/highest first). Fallback: year_read/published year.
+    // Sort books by order or fallback
     const sortedBooks = [...books].sort((a, b) => {
         const orderA = getOrder(a);
         const orderB = getOrder(b);
-        if (orderA !== orderB) {
-            return orderB - orderA; // higher order = newer
-        }
-
+        if (orderA !== orderB) return orderB - orderA;
         const yearA = parseInt(getYearRead(a)) || getPublishedYear(a);
         const yearB = parseInt(getYearRead(b)) || getPublishedYear(b);
         return yearB - yearA;
     });
 
-    grid.innerHTML = sortedBooks.map((book, index) => {
+    grid.innerHTML = sortedBooks.map(book => {
         const yearRead = getYearRead(book);
         return `
-        <a href="book-detail.html?index=${index}" class="book-card-link">
-            <div class="book-card" data-book-index="${index}">
+        <a href="book-detail.html?id=${book._id}" class="book-card-link">
+            <div class="book-card">
                 <div class="book-cover">
-                    ${book.coverURL ? 
+                    ${book.coverURL ?
                         `<img src="${escapeHtml(book.coverURL.replace('http://', 'https://'))}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>${escapeHtml(book.title)}</span>';">` :
                         `<span>${escapeHtml(book.title)}</span>`
                     }
@@ -192,6 +261,7 @@ function displayBooks(books) {
         `;
     }).join('');
 }
+
 
 function escapeHtml(text) {
     const div = document.createElement('div');

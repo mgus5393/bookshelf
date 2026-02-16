@@ -109,18 +109,63 @@ function displaySearchResults(books) {
 }
 
 // Add book to collection
-async function addBook(bookData) {
-    // Get year read from user
-    const currentYear = new Date().getFullYear();
-    const yearRead = prompt(`Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`, 
-        currentYear.toString());
+// async function addBook(bookData) {
+//     // Get year read from user
+//     const currentYear = new Date().getFullYear();
+//     const yearRead = prompt(`Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`, 
+//         currentYear.toString());
     
-    if (yearRead === null) {
-        return; // User cancelled
-    }
+//     if (yearRead === null) {
+//         return; // User cancelled
+//     }
+
+//     const bookToSave = {
+//         ...bookData,
+//         year_read: yearRead && yearRead.trim() ? yearRead.trim() : ''
+//     };
+
+//     try {
+//         const response = await fetch('/.netlify/functions/save-book', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(bookToSave)
+//         });
+
+//         const result = await response.json();
+
+//         if (response.ok) {
+//             showMessage('Book added successfully!', 'success');
+//             // Clear search after a moment
+//             setTimeout(() => {
+//                 document.getElementById('searchInput').value = '';
+//                 document.getElementById('searchResults').innerHTML = '';
+//             }, 2000);
+//         } else {
+//             throw new Error(result.error || 'Failed to save book');
+//         }
+//     } catch (error) {
+//         console.error('Error adding book:', error);
+//         showMessage(`Error: ${error.message}`, 'error');
+//     }
+// }
+
+async function addBook(bookData) {
+    const currentYear = new Date().getFullYear();
+    const yearRead = prompt(
+        `Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`, 
+        currentYear.toString()
+    );
+
+    if (yearRead === null) return; // User cancelled
+
+    // Assign _id for consistency
+    const _id = `book-${Date.now()}`; // simple unique ID based on timestamp
 
     const bookToSave = {
         ...bookData,
+        _id,
         year_read: yearRead && yearRead.trim() ? yearRead.trim() : ''
     };
 
@@ -137,6 +182,12 @@ async function addBook(bookData) {
 
         if (response.ok) {
             showMessage('Book added successfully!', 'success');
+
+            // Add the new book to the local arrays to update gallery immediately
+            allBooks.push(bookToSave);
+            filteredBooks.push(bookToSave);
+            displayBooks(filteredBooks);
+
             // Clear search after a moment
             setTimeout(() => {
                 document.getElementById('searchInput').value = '';

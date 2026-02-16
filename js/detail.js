@@ -1,41 +1,79 @@
 // Load book details from URL parameter
+// async function loadBookDetail() {
+//     try {
+//         // Get book index from URL
+//         const urlParams = new URLSearchParams(window.location.search);
+//         const indexParam = urlParams.get('index');
+        
+//         if (indexParam === null) {
+//             showError('No book specified');
+//             return;
+//         }
+        
+//         // Load all books
+//         const response = await fetch('books.json');
+//         if (!response.ok) {
+//             throw new Error('Failed to load books');
+//         }
+//         const allBooks = await response.json();
+        
+//         // Sort books the same way as gallery (by order, then year)
+//         const sortedBooks = [...allBooks].sort((a, b) => {
+//             const orderA = (Number.isFinite(a.order) ? a.order : parseInt(a.order) || 0);
+//             const orderB = (Number.isFinite(b.order) ? b.order : parseInt(b.order) || 0);
+//             if (orderA !== orderB) {
+//                 return orderB - orderA;
+//             }
+//             const yearA = parseInt(a['year read'] ?? a.year_read) || (a['published year'] ?? a.published_year ?? 0);
+//             const yearB = parseInt(b['year read'] ?? b.year_read) || (b['published year'] ?? b.published_year ?? 0);
+//             return yearB - yearA;
+//         });
+        
+//         const index = parseInt(indexParam);
+//         if (isNaN(index) || index < 0 || index >= sortedBooks.length) {
+//             showError('Invalid book index');
+//             return;
+//         }
+        
+//         const book = sortedBooks[index];
+//         displayBookDetail(book);
+//     } catch (error) {
+//         console.error('Error loading book detail:', error);
+//         showError('Failed to load book details');
+//     }
+// }
+// Load book details from URL parameter
 async function loadBookDetail() {
     try {
-        // Get book index from URL
+        // Get book ID from URL
         const urlParams = new URLSearchParams(window.location.search);
-        const indexParam = urlParams.get('index');
-        
-        if (indexParam === null) {
+        const idParam = urlParams.get('id');  // <-- changed from "index" to "id"
+
+        if (!idParam) {
             showError('No book specified');
             return;
         }
-        
+
         // Load all books
         const response = await fetch('books.json');
-        if (!response.ok) {
-            throw new Error('Failed to load books');
-        }
-        const allBooks = await response.json();
-        
-        // Sort books the same way as gallery (by order, then year)
-        const sortedBooks = [...allBooks].sort((a, b) => {
-            const orderA = (Number.isFinite(a.order) ? a.order : parseInt(a.order) || 0);
-            const orderB = (Number.isFinite(b.order) ? b.order : parseInt(b.order) || 0);
-            if (orderA !== orderB) {
-                return orderB - orderA;
-            }
-            const yearA = parseInt(a['year read'] ?? a.year_read) || (a['published year'] ?? a.published_year ?? 0);
-            const yearB = parseInt(b['year read'] ?? b.year_read) || (b['published year'] ?? b.published_year ?? 0);
-            return yearB - yearA;
-        });
-        
-        const index = parseInt(indexParam);
-        if (isNaN(index) || index < 0 || index >= sortedBooks.length) {
-            showError('Invalid book index');
+        if (!response.ok) throw new Error('Failed to load books');
+
+        let allBooks = await response.json();
+
+        // Assign unique ID if missing (must match gallery.js)
+        allBooks = allBooks.map((book, i) => ({
+            ...book,
+            _id: book._id ?? `book-${i + 1}`
+        }));
+
+        // Find the book by _id
+        const book = allBooks.find(b => b._id === idParam);
+
+        if (!book) {
+            showError('Book not found');
             return;
         }
-        
-        const book = sortedBooks[index];
+
         displayBookDetail(book);
     } catch (error) {
         console.error('Error loading book detail:', error);

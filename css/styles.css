@@ -76,7 +76,7 @@ header nav a:hover {
     display: block;
 }
 
-.book-card {
+/*.book-card {
     background: var(--card-bg);
     border-radius: 8px;
     overflow: hidden;
@@ -85,17 +85,31 @@ header nav a:hover {
     cursor: pointer;
     display: block;
     height: 100%;
+}*/
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    height: 350px; /* fixed card height, adjust as needed */
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
+
+
 
 .book-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
 }
 
-.book-cover {
+/*.book-cover {
     width: 100%;
     aspect-ratio: 2/3;
-    object-fit: cover;
+    overflow: hidden;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
@@ -103,11 +117,41 @@ header nav a:hover {
     color: white;
     font-size: 0.9rem;
     text-align: center;
-    padding: 1rem;
+}*/
+
+.book-cover {
+    flex: 0 0 220px; /* fixed cover height */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;             /* THIS ensures all images fill the container equally */
+    display: block;
+}
+
+.book-cover span {
+    padding: 0.5rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 .book-info {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    flex: 1; /* allow it to fill remaining card height */
 }
 
 .book-title {
@@ -119,12 +163,18 @@ header nav a:hover {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .book-author {
     font-size: 0.85rem;
     color: #666;
     margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* show max 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .book-date {

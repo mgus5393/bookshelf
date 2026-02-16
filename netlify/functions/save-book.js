@@ -62,6 +62,20 @@ exports.handler = async (event, context) => {
             throw new Error(`Failed to fetch books.json: ${getFileResponse.statusText}`);
         }
 
+        // Determine next order value (1 higher than current max)
+        let maxOrder = 0;
+        for (const b of currentBooks) {
+            const raw = b.order;
+            const ord = Number.isFinite(raw) ? raw : parseInt(raw) || 0;
+            if (ord > maxOrder) {
+                maxOrder = ord;
+            }
+        }
+
+        if (!bookData.order) {
+            bookData.order = maxOrder + 1;
+        }
+        
         // Add new book
         currentBooks.push(bookData);
 

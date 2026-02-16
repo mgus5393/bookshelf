@@ -119,13 +119,9 @@ async function addBook(bookData) {
         return; // User cancelled
     }
 
-    // Get rating (optional)
-    const rating = prompt('Enter your rating (1-5) or leave blank:', '');
-
     const bookToSave = {
         ...bookData,
-        year_read: yearRead && yearRead.trim() ? yearRead.trim() : '',
-        rating: rating && rating.trim() ? rating.trim() : ''
+        year_read: yearRead && yearRead.trim() ? yearRead.trim() : ''
     };
 
     try {

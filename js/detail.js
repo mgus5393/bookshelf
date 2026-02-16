@@ -17,10 +17,15 @@ async function loadBookDetail() {
         }
         const allBooks = await response.json();
         
-        // Sort books the same way as gallery
+        // Sort books the same way as gallery (by order, then year)
         const sortedBooks = [...allBooks].sort((a, b) => {
-            const yearA = a.year_read ? parseInt(a.year_read) : (a.published_year || 0);
-            const yearB = b.year_read ? parseInt(b.year_read) : (b.published_year || 0);
+            const orderA = (Number.isFinite(a.order) ? a.order : parseInt(a.order) || 0);
+            const orderB = (Number.isFinite(b.order) ? b.order : parseInt(b.order) || 0);
+            if (orderA !== orderB) {
+                return orderB - orderA;
+            }
+            const yearA = parseInt(a['year read'] ?? a.year_read) || (a['published year'] ?? a.published_year ?? 0);
+            const yearB = parseInt(b['year read'] ?? b.year_read) || (b['published year'] ?? b.published_year ?? 0);
             return yearB - yearA;
         });
         
@@ -58,10 +63,9 @@ function displayBookDetail(book) {
                 <h2 class="book-detail-author">${escapeHtml(book.author || 'Unknown Author')}</h2>
                 
                 <div class="book-detail-meta">
-                    ${book.published_year ? `<div class="meta-item"><strong>Published:</strong> ${book.published_year}</div>` : ''}
+                    ${book['published year'] || book.published_year ? `<div class="meta-item"><strong>Published:</strong> ${book['published year'] ?? book.published_year}</div>` : ''}
                     ${book.genre ? `<div class="meta-item"><strong>Genre:</strong> ${book.genre}</div>` : ''}
-                    ${book.year_read ? `<div class="meta-item"><strong>Year Read:</strong> ${book.year_read}</div>` : ''}
-                    ${book.rating ? `<div class="meta-item"><strong>Rating:</strong> ⭐ ${book.rating}</div>` : ''}
+                    ${book['year read'] || book.year_read ? `<div class="meta-item"><strong>Year Read:</strong> ${book['year read'] ?? book.year_read}</div>` : ''}
                 </div>
             </div>
         </div>

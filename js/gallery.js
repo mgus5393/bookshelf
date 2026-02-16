@@ -13,7 +13,7 @@ async function loadBooks() {
         filteredBooks = [...allBooks];
         
         populateFilters();
-        displayBooks(filteredBooks);
+        applyFilters(); // will call displayBooks + count
         setupEventListeners();
     } catch (error) {
         console.error('Error loading books:', error);
@@ -25,14 +25,42 @@ async function loadBooks() {
     }
 }
 
+// Helper to normalize fields from both old and new schemas
+function getYearRead(book) {
+    const yr = book.year_read ?? book['year read'];
+    if (yr === undefined || yr === null) return '';
+    return String(yr);
+}
+
+function getPublishedYear(book) {
+    const py = book.published_year ?? book['published year'];
+    if (py === undefined || py === null) return 0;
+    return Number.isFinite(py) ? py : parseInt(py) || 0;
+}
+
+function getOrder(book) {
+    const ord = book.order;
+    if (ord === undefined || ord === null) return 0;
+    return Number.isFinite(ord) ? ord : parseInt(ord) || 0;
+}
+
 // Populate filter dropdowns
 function populateFilters() {
     const yearFilter = document.getElementById('yearFilter');
     const genreFilter = document.getElementById('genreFilter');
     
-    // Get unique years and genres
-    const years = [...new Set(allBooks.map(book => book.year_read).filter(y => y && y.trim()))].sort((a, b) => b - a);
-    const genres = [...new Set(allBooks.map(book => book.genre).filter(g => g && g.trim()))].sort();
+    // Get unique years and genres from normalized fields
+    const years = [...new Set(
+        allBooks
+            .map(b => getYearRead(b).trim())
+            .filter(Boolean)
+    )].sort((a, b) => b - a);
+
+    const genres = [...new Set(
+        allBooks
+            .map(book => (book.genre || '').trim())
+            .filter(Boolean)
+    )].sort();
     
     // Populate year filter
     years.forEach(year => {
@@ -60,7 +88,7 @@ function setupEventListeners() {
     
     let searchTimeout;
     
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', () => {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(() => {
             applyFilters();
@@ -84,16 +112,22 @@ function applyFilters() {
     const selectedGenre = document.getElementById('genreFilter').value;
     
     filteredBooks = allBooks.filter(book => {
+        const title = (book.title || '').toLowerCase();
+        const author = (book.author || '').toLowerCase();
+        const yearRead = getYearRead(book);
+        const genre = (book.genre || '');
+
         // Search filter
-        const matchesSearch = !searchTerm || 
-            book.title.toLowerCase().includes(searchTerm) ||
-            (book.author && book.author.toLowerCase().includes(searchTerm));
+        const matchesSearch =
+            !searchTerm ||
+            title.includes(searchTerm) ||
+            author.includes(searchTerm);
         
         // Year filter
-        const matchesYear = !selectedYear || book.year_read === selectedYear;
+        const matchesYear = !selectedYear || yearRead === selectedYear;
         
         // Genre filter
-        const matchesGenre = !selectedGenre || book.genre === selectedGenre;
+        const matchesGenre = !selectedGenre || genre === selectedGenre;
         
         return matchesSearch && matchesYear && matchesGenre;
     });
@@ -106,6 +140,7 @@ function applyFilters() {
 function updateResultsCount() {
     const resultsCount = document.getElementById('resultsCount');
     const count = filteredBooks.length;
+    if (!resultsCount) return;
     if (count === allBooks.length) {
         resultsCount.textContent = '';
     } else {
@@ -116,19 +151,28 @@ function updateResultsCount() {
 function displayBooks(books) {
     const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
     
+    if (!grid) return;
+
     if (!books || books.length === 0) {
         grid.innerHTML = '<div class="empty-state"><h2>No books found</h2><p>Try adjusting your filters or search terms.</p></div>';
         return;
     }
 
-    // Sort books by year_read (newest first), then by published_year
+    // Sort books by order (newest/highest first). Fallback: year_read/published year.
     const sortedBooks = [...books].sort((a, b) => {
-        const yearA = a.year_read ? parseInt(a.year_read) : (a.published_year || 0);
-        const yearB = b.year_read ? parseInt(b.year_read) : (b.published_year || 0);
+        const orderA = getOrder(a);
+        const orderB = getOrder(b);
+        if (orderA !== orderB) {
+            return orderB - orderA; // higher order = newer
+        }
+
+        const yearA = parseInt(getYearRead(a)) || getPublishedYear(a);
+        const yearB = parseInt(getYearRead(b)) || getPublishedYear(b);
         return yearB - yearA;
     });
 
     grid.innerHTML = sortedBooks.map((book, index) => {
+        const yearRead = getYearRead(book);
         return `
         <a href="book-detail.html?index=${index}" class="book-card-link">
             <div class="book-card" data-book-index="${index}">
@@ -141,16 +185,12 @@ function displayBooks(books) {
                 <div class="book-info">
                     <div class="book-title">${escapeHtml(book.title)}</div>
                     <div class="book-author">${escapeHtml(book.author || 'Unknown Author')}</div>
-                    ${book.year_read ? `<div class="book-date">Read: ${book.year_read}</div>` : ''}
-                    ${book.rating ? `<div class="book-rating">⭐ ${book.rating}</div>` : ''}
+                    ${yearRead ? `<div class="book-date">Read: ${escapeHtml(yearRead)}</div>` : ''}
                 </div>
             </div>
         </a>
         `;
     }).join('');
-
-    // Store book data for detail page navigation
-    window.sortedBooks = sortedBooks;
 }
 
 function escapeHtml(text) {
@@ -161,3 +201,4 @@ function escapeHtml(text) {
 
 // Load books when page loads
 document.addEventListener('DOMContentLoaded', loadBooks);
+

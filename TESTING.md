@@ -27,17 +27,16 @@ Then open: http://localhost:8000
 ### 1. Gallery Page (index.html)
 - ✅ Should load and display all books from `books.json`
 - ✅ Books should show covers, titles, authors
-- ✅ Books with `year_read` should show "Read: [year]"
-- ✅ Books with `rating` should show star rating
-- ✅ Clicking a book should show details popup
+- ✅ Books with `year_read` / `year read` should show "Read: [year]"
+- ✅ Newest books (highest `order`) should appear first
+- ✅ Clicking a book should show a full detail page
 - ✅ Should be responsive on mobile
 
 ### 2. Add Book Page (add.html)
 - ✅ Search box should work (try searching for "Harry Potter")
 - ✅ Results should show book covers and details
 - ✅ Clicking "Add Book" should prompt for:
-  - Year read (YYYY format)
-  - Rating (1-5, optional)
+  - Year read (YYYY format, optional)
 - ✅ After adding, should show success message
 
 ### 3. Netlify Function Test

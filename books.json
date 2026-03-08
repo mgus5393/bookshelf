@@ -1579,5 +1579,15 @@
     "_id": "book-1773005952652",
     "year_read": "2025",
     "order": 175
+  },
+  {
+    "title": "Meet Me at the Lake",
+    "author": "Carley Fortune",
+    "coverURL": "https://books.google.com/books/content?id=gVd-EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "published_year": 2023,
+    "genre": "Fiction",
+    "_id": "book-1773005967502",
+    "year_read": "2025",
+    "order": 176
   }
 ]

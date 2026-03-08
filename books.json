@@ -1539,5 +1539,15 @@
     "_id": "book-1773005291675",
     "year_read": "2025",
     "order": 171
+  },
+  {
+    "title": "Entitlement",
+    "author": "Rumaan Alam",
+    "coverURL": "https://books.google.com/books/content?id=tV34EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "published_year": 2024,
+    "genre": "Fiction",
+    "_id": "book-1773005841845",
+    "year_read": "2025",
+    "order": 172
   }
 ]

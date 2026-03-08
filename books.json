@@ -1521,13 +1521,14 @@
     "year read": 2024
   },
   {
-    "order": 173,
-    "title": "Maybe You Should Talk to Someone",
-    "author": "Lori Gottlieb",
-    "published year": 2019,
-    "genre": "Biography & Autobiography",
-    "coverURL": "http://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-    "year read": 2025
+    "title": "The Life Impossible",
+    "author": "Matt Haig",
+    "coverURL": "https://books.google.com/books/content?id=nZHP0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "published_year": 2024,
+    "genre": "Female friendship",
+    "_id": "book-1773005291675",
+    "year_read": "2025",
+    "order": 171
   },
   {
     "title": "A Court of Frost and Starlight",
@@ -1537,16 +1538,15 @@
     "genre": "Fiction",
     "_id": "book-1773005272458",
     "year_read": "2025",
-    "order": 174
+    "order": 170
   },
   {
-    "title": "The Life Impossible",
-    "author": "Matt Haig",
-    "coverURL": "https://books.google.com/books/content?id=nZHP0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    "published_year": 2024,
-    "genre": "Female friendship",
-    "_id": "book-1773005291675",
-    "year_read": "2025",
-    "order": 175
+    "order": 173,
+    "title": "Maybe You Should Talk to Someone",
+    "author": "Lori Gottlieb",
+    "published year": 2019,
+    "genre": "Biography & Autobiography",
+    "coverURL": "http://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "year read": 2025
   }
 ]

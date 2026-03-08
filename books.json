@@ -1538,5 +1538,15 @@
     "_id": "book-1773005272458",
     "year_read": "2025",
     "order": 174
+  },
+  {
+    "title": "The Life Impossible",
+    "author": "Matt Haig",
+    "coverURL": "https://books.google.com/books/content?id=nZHP0AEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "published_year": 2024,
+    "genre": "Female friendship",
+    "_id": "book-1773005291675",
+    "year_read": "2025",
+    "order": 175
   }
 ]

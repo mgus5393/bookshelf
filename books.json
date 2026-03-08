@@ -1589,5 +1589,15 @@
     "_id": "book-1773005967502",
     "year_read": "2025",
     "order": 176
+  },
+  {
+    "title": "How to Do Nothing",
+    "author": "Jenny Odell",
+    "coverURL": "https://books.google.com/books/content?id=OMBkDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "published_year": 2019,
+    "genre": "Technology & Engineering",
+    "_id": "book-1773005989175",
+    "year_read": "2025",
+    "order": 177
   }
 ]

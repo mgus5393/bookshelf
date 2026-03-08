@@ -2,39 +2,53 @@
 let allBooks = [];
 let filteredBooks = [];
 
-// Load and display books
 // async function loadBooks() {
 //     try {
 //         const response = await fetch('books.json');
-//         if (!response.ok) {
-//             throw new Error('Failed to load books');
-//         }
+//         if (!response.ok) throw new Error('Failed to load books');
+
 //         allBooks = await response.json();
+
+//         // Assign unique ID if it doesn't exist
+//         allBooks = allBooks.map((book, i) => ({
+//             ...book,
+//             _id: book._id ?? `book-${i+1}` // string id
+//         }));
+
 //         filteredBooks = [...allBooks];
-        
+
 //         populateFilters();
-//         applyFilters(); // will call displayBooks + count
+//         applyFilters();
 //         setupEventListeners();
 //     } catch (error) {
 //         console.error('Error loading books:', error);
 //         const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
 //         if (grid) {
-//             grid.innerHTML = 
+//             grid.innerHTML =
 //                 '<div class="empty-state"><h2>Unable to load books</h2><p>Please check your connection and try again.</p></div>';
 //         }
 //     }
 // }
+
 async function loadBooks() {
     try {
-        const response = await fetch('books.json');
-        if (!response.ok) throw new Error('Failed to load books');
 
-        allBooks = await response.json();
+        const { data: books, error } = await supabase
+            .from('books')
+            .select('*');
 
-        // Assign unique ID if it doesn't exist
-        allBooks = allBooks.map((book, i) => ({
-            ...book,
-            _id: book._id ?? `book-${i+1}` // string id
+        if (error) throw error;
+
+        // Convert Supabase rows into the structure your app expects
+        allBooks = books.map((book) => ({
+            _id: book.id,
+            title: book.title,
+            author: book.author,
+            coverURL: book.cover_url,
+            genre: book.genre,
+            published_year: book.published_year,
+            year_read: book.year_read,
+            order: book.order
         }));
 
         filteredBooks = [...allBooks];
@@ -42,8 +56,10 @@ async function loadBooks() {
         populateFilters();
         applyFilters();
         setupEventListeners();
+
     } catch (error) {
         console.error('Error loading books:', error);
+
         const grid = document.getElementById('booksGrid') || document.querySelector('.books-grid');
         if (grid) {
             grid.innerHTML =
@@ -51,7 +67,6 @@ async function loadBooks() {
         }
     }
 }
-
 
 // Helper to normalize fields from both old and new schemas
 function getYearRead(book) {

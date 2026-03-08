@@ -152,8 +152,9 @@ function displaySearchResults(books) {
 // }
 
 async function addBook(bookData) {
-    // Get year read from user
+
     const currentYear = new Date().getFullYear();
+
     const yearRead = prompt(
         `Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`,
         currentYear.toString()
@@ -161,38 +162,47 @@ async function addBook(bookData) {
 
     if (yearRead === null) return; // User cancelled
 
-    // Generate a unique ID for the new book
-    const bookToSave = {
-        ...bookData,
-        _id: `book-${Date.now()}`, // unique string ID
-        year_read: yearRead && yearRead.trim() ? yearRead.trim() : ''
-    };
-
     try {
-        const response = await fetch('/.netlify/functions/save-book', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(bookToSave)
-        });
 
-        const result = await response.json();
+        // Get the current highest order number
+        const { data: existingBooks, error: fetchError } = await supabase
+            .from('books')
+            .select('order')
+            .order('order', { ascending: false })
+            .limit(1);
 
-        if (response.ok) {
-            showMessage('Book added successfully!', 'success');
+        if (fetchError) throw fetchError;
 
-            // Clear search after a moment
-            setTimeout(() => {
-                document.getElementById('searchInput').value = '';
-                document.getElementById('searchResults').innerHTML = '';
-            }, 2000);
-        } else {
-            throw new Error(result.error || 'Failed to save book');
-        }
+        const nextOrder = existingBooks.length ? existingBooks[0].order + 1 : 1;
+
+        // Insert the new book
+        const { error: insertError } = await supabase
+            .from('books')
+            .insert([
+                {
+                    title: bookData.title,
+                    author: bookData.author,
+                    cover_url: bookData.coverURL,
+                    published_year: bookData.published_year,
+                    genre: bookData.genre,
+                    year_read: yearRead && yearRead.trim() ? parseInt(yearRead) : null,
+                    order: nextOrder
+                }
+            ]);
+
+        if (insertError) throw insertError;
+
+        showMessage('Book added successfully!', 'success');
+
+        // Clear search UI
+        setTimeout(() => {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchResults').innerHTML = '';
+        }, 1500);
+
     } catch (error) {
         console.error('Error adding book:', error);
-        showMessage(`Error: ${error.message}`, 'error');
+        showMessage(`Error adding book`, 'error');
     }
 }
 

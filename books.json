@@ -1549,5 +1549,15 @@
     "_id": "book-1773005841845",
     "year_read": "2025",
     "order": 172
+  },
+  {
+    "title": "Maybe You Should Talk to Someone",
+    "author": "Lori Gottlieb",
+    "coverURL": "https://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "published_year": 2019,
+    "genre": "Biography & Autobiography",
+    "_id": "book-1773005862587",
+    "year_read": "2025",
+    "order": 173
   }
 ]

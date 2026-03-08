@@ -1599,5 +1599,15 @@
     "_id": "book-1773005989175",
     "year_read": "2025",
     "order": 177
+  },
+  {
+    "title": "The Answer Is No",
+    "author": "Fredrik Backman",
+    "coverURL": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1727897163i/219876684.jpg",
+    "published_year": 2024,
+    "genre": "Novella",
+    "_id": "book-1773005989176",
+    "year_read": "2025",
+    "order": 178
   }
 ]

@@ -1559,5 +1559,15 @@
     "_id": "book-1773005862587",
     "year_read": "2025",
     "order": 173
+  },
+  {
+    "title": "Wish You Were Here",
+    "author": "Jodi Picoult",
+    "coverURL": "https://books.google.com/books/content?id=s7TpzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "published_year": 2022,
+    "genre": "Fiction",
+    "_id": "book-1773005932893",
+    "year_read": "2025",
+    "order": 174
   }
 ]

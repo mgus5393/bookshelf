@@ -1528,5 +1528,15 @@
     "genre": "Biography & Autobiography",
     "coverURL": "http://books.google.com/books/content?id=ATKQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     "year read": 2025
+  },
+  {
+    "title": "A Court of Frost and Starlight",
+    "author": "Sarah J. Maas",
+    "coverURL": "https://books.google.com/books/content?id=3wA1DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "published_year": 2018,
+    "genre": "Fiction",
+    "_id": "book-1773005272458",
+    "year_read": "2025",
+    "order": 174
   }
 ]

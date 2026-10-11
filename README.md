@@ -133,3 +133,7 @@ Once migration and the new deployment are verified, the obsolete Netlify
 `GITHUB_TOKEN`, `GITHUB_OWNER`, and `GITHUB_REPO` variables can be removed, and a
 token dedicated to the old save function can be revoked. Do not revoke a token
 used by other projects. Keep the old service/data until migration is confirmed.
+
+## Reading wait list
+
+Use **Wait list** in the navigation for books to read later. Browse without signing in; use the existing editing password to add, edit, or remove entries. The same catalog search and manual-entry form are available. Wait-list entries live under a separate `waitlist` key in the same durable store and do not affect finished books or their reading order. Removal asks for confirmation. Local development also keeps each list in its own file.

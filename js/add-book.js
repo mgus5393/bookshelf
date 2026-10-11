@@ -1,6 +1,19 @@
 import { $, el, api, cover, message, detailURL } from './common.js';
 const form = $('#bookForm');
 const editId = new URLSearchParams(location.search).get('id');
+const waiting = new URLSearchParams(location.search).get('list') === 'waitlist';
+const endpoint = waiting ? 'waitlist' : 'books';
+const initialFields = () => ({ year_read: waiting ? '' : new Date().getFullYear() });
+if (waiting) {
+  $('#pageTitle').textContent = 'A book for later.';
+  $('#pageIntro').textContent = 'Find a book you might like to read and save it to your wait list.';
+  document.title = "Add to wait list · Rebecca's Bookshelf";
+  const addLink = document.querySelector('nav a[aria-current="page"]');
+  addLink.href = 'add.html?list=waitlist'; addLink.textContent = 'Add to wait list';
+  $('#saveBtn').textContent = 'Add to wait list';
+  form.elements.namedItem('year_read').closest('label').hidden = true;
+  const back = form.querySelector('a'); back.href = 'waitlist.html'; back.textContent = 'Back to wait list';
+}
 let currentBook = null;
 let saveId = crypto.randomUUID();
 let dirty = false;
@@ -17,7 +30,7 @@ function requireLogin(text) {
 async function initializeEditor() {
   if (loaded) return;
   if (editId) {
-    const { books } = await api('books');
+    const { books } = await api(endpoint);
     currentBook = books.find(b => b._id === editId);
     if (!currentBook) throw new Error('This book could not be found. Return to the collection and choose a book.');
     $('#pageTitle').textContent = 'A little revision.';
@@ -26,7 +39,7 @@ async function initializeEditor() {
     $('#saveBtn').textContent = 'Save changes';
     document.title = 'Edit a book · The Bookshelf';
     fill(currentBook);
-  } else fill({ year_read: new Date().getFullYear() });
+  } else fill(initialFields());
   loaded = true;
 }
 async function start() {
@@ -66,7 +79,7 @@ $('#searchForm').addEventListener('submit', async event => {
       const choose = el('button', { type: 'button', text: 'Choose this book' });
       choose.addEventListener('click', () => {
         if (dirty && !confirm('Replace the current book details with this search result?')) return;
-        fill({ ...book, year_read: form.elements.namedItem('year_read').value || new Date().getFullYear() });
+        fill({ ...book, year_read: waiting ? '' : form.elements.namedItem('year_read').value || new Date().getFullYear() });
         saveId = crypto.randomUUID(); dirty = true;
         message($('#saveMessage'), 'Details filled in. Check the title and author, then save.');
         $('#bookPanel').scrollIntoView({ block: 'start' }); $('#title').focus();
@@ -90,13 +103,13 @@ form.addEventListener('submit', async event => {
   if (editId) body.version = currentBook.version;
   message($('#saveMessage'), 'Saving to your bookshelf…');
   try {
-    const { book } = await api('books', { method: editId ? 'PUT' : 'POST', body });
+    const { book } = await api(endpoint, { method: editId ? 'PUT' : 'POST', body });
     dirty = false;
-    message($('#saveMessage'), editId ? 'Changes saved. ' : 'Added to your bookshelf. ', 'success');
-    $('#saveMessage').append(el('a', { href: detailURL(book), text: 'View your book →' }));
+    message($('#saveMessage'), editId ? 'Changes saved. ' : waiting ? 'Added to your wait list. ' : 'Added to your bookshelf. ', 'success');
+    $('#saveMessage').append(el('a', { href: waiting ? 'waitlist.html' : detailURL(book), text: waiting ? 'View wait list →' : 'View your book →' }));
     if (editId) currentBook = book;
     else {
-      form.reset(); fill({ year_read: new Date().getFullYear() }); saveId = crypto.randomUUID();
+      form.reset(); fill(initialFields()); saveId = crypto.randomUUID();
       $('#searchResults').replaceChildren(); $('#searchStatus').textContent = ''; $('#searchInput').value = '';
     }
   } catch (error) {

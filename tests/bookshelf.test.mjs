@@ -24,6 +24,31 @@ function fixture() {
   return { store, handler: createBooksHandler({ store, seed, password }) };
 }
 const book = (id = 'new-book') => ({ _id: id, title: 'A New Book', author: 'An Author', year_read: '2026' });
+
+test('wait list stays separate, requires editing access, persists, and supports removal', async () => {
+  const records = new Map(); let version = 0;
+  const store = {
+    async getWithMetadata(key) { return records.has(key) ? structuredClone(records.get(key)) : null; },
+    async setJSON(key, data, options) {
+      const current = records.get(key);
+      if (options.onlyIfNew && current || options.onlyIfMatch && options.onlyIfMatch !== current?.etag) return { modified: false };
+      records.set(key, { data: structuredClone(data), etag: String(++version) }); return { modified: true };
+    }
+  };
+  const read = createBooksHandler({ store, seed, password });
+  const waiting = () => createBooksHandler({ store, seed: [], password, storageKey: 'waitlist' });
+  const candidate = { ...book('later'), year_read: '' };
+  assert.equal((await waiting()(request('/api/waitlist', 'POST', candidate))).status, 401);
+  const saved = await waiting()(request('/api/waitlist', 'POST', candidate, cookie));
+  assert.equal(saved.status, 201);
+  assert.equal((await (await waiting()(request('/api/waitlist'))).json()).books.length, 1);
+  assert.equal((await (await read(request('/api/books'))).json()).books.length, 178);
+  await read(request('/api/books', 'POST', book('read-book'), cookie));
+  assert.equal((await waiting()(request('/api/waitlist', 'DELETE', { _id: 'later', version: 1 }))).status, 401);
+  assert.equal((await waiting()(request('/api/waitlist', 'DELETE', { _id: 'later', version: 1 }, cookie))).status, 200);
+  assert.equal((await (await waiting()(request('/api/waitlist'))).json()).books.length, 0);
+  assert.equal((await (await read(request('/api/books'))).json()).books.length, 179);
+});
 test('all 178 legacy books and stable IDs survive normalization', () => {
   assert.equal(seed.length, 178); assert.equal(new Set(seed.map(b => b._id)).size, 178);
   assert.equal(seed[0]._id, 'book-1'); assert.equal(seed.at(-1)._id, 'book-1773005989176');

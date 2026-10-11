@@ -10,18 +10,19 @@ const storage = resolve(root, '.local-data');
 await mkdir(storage, { recursive: true });
 const password = process.env.BOOKSHELF_PASSWORD || randomBytes(18).toString('base64url');
 const seed = normalizeSeed(JSON.parse(await readFile(resolve(root, 'books.json'), 'utf8')));
-const dataPath = resolve(storage, 'collection.json');
 let queue = Promise.resolve();
 const store = {
-  async getWithMetadata() {
+  async getWithMetadata(key = 'collection') {
+    const dataPath = resolve(storage, `${key}.json`);
     try {
       const text = await readFile(dataPath, 'utf8');
       return { data: JSON.parse(text), etag: createHash('sha256').update(text).digest('hex') };
     } catch (error) { if (error.code === 'ENOENT') return null; throw error; }
   },
   async setJSON(key, value, options) {
+    const dataPath = resolve(storage, `${key}.json`);
     const write = queue.then(async () => {
-      const record = await this.getWithMetadata();
+      const record = await this.getWithMetadata(key);
       if ((options.onlyIfNew && record) || (options.onlyIfMatch && options.onlyIfMatch !== record?.etag)) return { modified: false };
       await writeFile(`${dataPath}.tmp`, JSON.stringify(value));
       await rename(`${dataPath}.tmp`, dataPath);
@@ -33,6 +34,7 @@ const store = {
 };
 const handlers = {
   '/api/books': createBooksHandler({ store, seed, password }),
+  '/api/waitlist': createBooksHandler({ store, seed: [], password, storageKey: 'waitlist' }),
   '/api/session': createSessionHandler(password),
   '/api/search': createSearchHandler({ password })
 };
@@ -59,7 +61,7 @@ const server = createServer(async (req, res) => {
     }
     const path = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname);
     const target = resolve(root, `.${path}`);
-    const allowed = ['index.html', 'add.html', 'book-detail.html', '404.html', 'robots.txt'].includes(path.slice(1)) || /^\/(js|css)\/[^/]+\.(js|css)$/.test(path);
+    const allowed = ['index.html', 'add.html', 'book-detail.html', 'waitlist.html', '404.html', 'robots.txt'].includes(path.slice(1)) || /^\/(js|css)\/[^/]+\.(js|css)$/.test(path);
     if (!target.startsWith(root + sep) || !allowed) { res.writeHead(404); res.end('Not found'); return; }
     const content = await readFile(target);
     res.writeHead(200, { 'Content-Type': types[extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-store' }); res.end(content);

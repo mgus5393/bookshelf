@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '..');
 const dist = resolve(root, 'dist');
 await mkdir(dist, { recursive: true });
-for (const name of ['index.html', 'add.html', 'book-detail.html', '404.html', 'robots.txt'])
+for (const name of ['index.html', 'add.html', 'book-detail.html', 'waitlist.html', '404.html', 'robots.txt'])
   await copyFile(resolve(root, name), resolve(dist, name));
 for (const name of ['css', 'js']) await cp(resolve(root, name), resolve(dist, name), { recursive: true });
 const context = process.env.CONTEXT || 'dev';

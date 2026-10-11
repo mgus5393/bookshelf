@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+  <title>Wait list · Rebecca's Bookshelf</title><link rel="stylesheet" href="css/styles.css"><script type="module" src="js/waitlist.js"></script>
+</head><body>
+  <header class="site-header"><a class="brand" href="index.html"><span aria-hidden="true">▥</span> Rebecca's Bookshelf</a><nav aria-label="Main"><a href="index.html">The collection</a><a aria-current="page" href="waitlist.html">Wait list</a><a class="button small" href="add.html?list=waitlist">+ Add to wait list</a></nav></header>
+  <main class="container">
+    <section class="intro"><p class="eyebrow">For another chapter</p><h1>What to read next.</h1><p>A little list of books to come back to.</p></section>
+    <section class="collection" aria-label="Reading wait list">
+      <div class="collection-heading"><h2>The wait list <span id="totalCount" class="count"></span></h2><a id="unlockLink" href="add.html?list=waitlist">Unlock to add or remove books</a></div>
+      <label><span class="sr-only">Search the wait list</span><input id="searchInput" type="search" placeholder="Find a title or author…"></label>
+      <p id="resultsCount" class="muted" role="status" aria-live="polite"></p><p id="waitlistMessage" class="notice" role="status" aria-live="polite"></p>
+      <div id="waitlist" class="waitlist" aria-busy="true"><p>Opening the wait list…</p></div>
+    </section>
+  </main><footer>A shelf of stories, always growing.</footer>
+</body></html>

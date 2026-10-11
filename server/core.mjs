@@ -113,7 +113,7 @@ function duplicate(a, b) {
   const key = v => v.trim().toLocaleLowerCase().replace(/\s+/g, ' ');
   return key(a.title) === key(b.title) && key(a.author) === key(b.author) && a.year_read === b.year_read;
 }
-export function createBooksHandler({ store, seed, password }) {
+export function createBooksHandler({ store, seed, password, storageKey = 'collection' }) {
   return withErrors(async request => {
     const method = request.method;
     if (method !== 'GET') { checkOrigin(request); requireEditor(request, password); }
@@ -124,7 +124,7 @@ export function createBooksHandler({ store, seed, password }) {
     // Compare-and-swap prevents lost updates and makes the first seed migration atomic.
     // Storage failures must never silently fall back to the old seed collection.
     for (let attempt = 0; attempt < 5; attempt++) {
-      const record = await store.getWithMetadata('collection', { type: 'json', consistency: 'strong' });
+      const record = await store.getWithMetadata(storageKey, { type: 'json', consistency: 'strong' });
       const books = record === null ? structuredClone(seed) : record.data;
       if (!Array.isArray(books)) throw new Error('Invalid stored collection');
       if (method === 'GET') return json({ books });
@@ -149,7 +149,7 @@ export function createBooksHandler({ store, seed, password }) {
           books[index] = saved;
         }
       }
-      const result = await store.setJSON('collection', books, record ? { onlyIfMatch: record.etag } : { onlyIfNew: true });
+      const result = await store.setJSON(storageKey, books, record ? { onlyIfMatch: record.etag } : { onlyIfNew: true });
       if (result.modified) return json(saved ? { book: saved } : { deleted: true }, method === 'POST' ? 201 : 200);
     }
     throw new HttpError(409, 'Someone else is saving right now. Please try again.');

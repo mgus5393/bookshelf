@@ -1,5 +1,7 @@
 import { $, el, api, cover, detailURL, downloadBooks } from './common.js';
 let books = [];
+let view = 'covers';
+try { if (localStorage.getItem('bookshelf-view') === 'list') view = 'list'; } catch { /* Storage may be unavailable in private browsers. */ }
 function render() {
   const query = $('#searchInput').value.trim().toLocaleLowerCase();
   const year = $('#yearFilter').value;
@@ -7,12 +9,22 @@ function render() {
   const selected = books.filter(b => `${b.title} ${b.author}`.toLocaleLowerCase().includes(query) && (!year || b.year_read === year) && (!genre || b.genre === genre));
   $('#resultsCount').textContent = `${selected.length} ${selected.length === 1 ? 'book' : 'books'}${selected.length !== books.length ? ` of ${books.length}` : ''}`;
   const grid = $('#booksGrid'); grid.replaceChildren();
+  grid.className = view === 'list' ? 'books-list' : 'books-grid';
+  $('#coversView').setAttribute('aria-pressed', String(view === 'covers'));
+  $('#listView').setAttribute('aria-pressed', String(view === 'list'));
   if (!selected.length) {
     grid.append(el('div', { className: 'empty-state' }, el('h2', { text: books.length ? 'No books on this shelf.' : 'Your first chapter starts here.' }),
       el('p', { text: books.length ? 'Try a different title, year, or genre.' : 'Add a book to begin your collection.' })));
     return;
   }
   for (const book of selected) {
+    if (view === 'list') {
+      grid.append(el('a', { className: 'book-row', href: detailURL(book) },
+        el('div', { className: 'book-row-info' }, el('h3', { text: book.title }), el('p', { className: 'book-author', text: book.author })),
+        el('span', { className: 'book-row-genre', text: book.genre || '' }),
+        el('span', { className: 'book-row-year', text: book.year_read ? `Read in ${book.year_read}` : '' })));
+      continue;
+    }
     const card = el('a', { className: 'book-card', href: detailURL(book) }, cover(book), el('h3', { text: book.title }), el('p', { className: 'book-author', text: book.author }));
     if (book.year_read) card.append(el('p', { className: 'book-year', text: `READ IN ${book.year_read}` }));
     grid.append(card);
@@ -30,6 +42,8 @@ async function load() {
       values.forEach(value => $(selector).append(el('option', { value, text: value })));
     }
     $('#backupBtn').disabled = false;
+    $('#coversView').disabled = false;
+    $('#listView').disabled = false;
     render();
   } catch (error) {
     const retry = el('button', { text: 'Try again' }); retry.addEventListener('click', () => location.reload());
@@ -41,4 +55,11 @@ $('#yearFilter').addEventListener('change', render);
 $('#genreFilter').addEventListener('change', render);
 $('#clearFilters').addEventListener('click', () => { ['#searchInput', '#yearFilter', '#genreFilter'].forEach(s => $(s).value = ''); render(); });
 $('#backupBtn').addEventListener('click', () => downloadBooks(books));
+for (const mode of ['covers', 'list']) {
+  $(`#${mode}View`).addEventListener('click', () => {
+    view = mode;
+    try { localStorage.setItem('bookshelf-view', view); } catch { /* Switching still works without storage. */ }
+    render();
+  });
+}
 load();

@@ -13,7 +13,7 @@
     <section class="collection" aria-label="Book collection">
       <div class="collection-heading"><h2>The collection <span id="totalCount" class="count"></span></h2><button class="text-button" id="backupBtn" disabled>Download book list</button></div>
       <div class="filters"><label class="search-label"><span class="sr-only">Search this collection</span><input id="searchInput" type="search" placeholder="Find a title or author…"></label><label><span class="sr-only">Year read</span><select id="yearFilter"><option value="">Every year</option></select></label><label><span class="sr-only">Genre</span><select id="genreFilter"><option value="">Every genre</option></select></label><button class="secondary" id="clearFilters">Clear</button></div>
-      <p id="resultsCount" class="muted" role="status" aria-live="polite"></p>
+      <div class="collection-toolbar"><p id="resultsCount" class="muted" role="status" aria-live="polite"></p><div class="view-toggle" role="group" aria-label="Collection view"><button id="coversView" aria-pressed="true" aria-controls="booksGrid" disabled>Covers</button><button id="listView" aria-pressed="false" aria-controls="booksGrid" disabled>List</button></div></div>
       <div id="booksGrid" class="books-grid" aria-busy="true"><p class="notice">Opening the bookshelf…</p></div>
     </section>
   </main><footer>A shelf of stories, always growing.</footer>

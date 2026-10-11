@@ -1,87 +1,34 @@
-// Load book details from URL parameter
-async function loadBookDetail() {
+import { $, el, api, cover, message } from './common.js';
+async function load() {
+  try {
+    const id = new URLSearchParams(location.search).get('id');
+    if (!id) throw new Error('No book was selected.');
+    const { books } = await api('books');
+    const book = books.find(b => b._id === id);
+    if (!book) throw new Error('This book is no longer on the shelf.');
+    document.title = `${book.title} · The Bookshelf`;
+    const info = el('section', {}, el('p', { className: 'eyebrow', text: 'From the collection' }), el('h1', { text: book.title }), el('p', { className: 'detail-author', text: book.author }));
+    const meta = el('dl', { className: 'detail-meta' });
+    for (const [label, value] of [['Year read', book.year_read], ['Published', book.published_year], ['Genre', book.genre]])
+      if (value) meta.append(el('dt', { text: label }), el('dd', { text: value }));
+    info.append(meta);
+    if (book.notes) info.append(el('h2', { text: 'A little note' }), el('p', { className: 'notes', text: book.notes }));
+    const actions = el('div', { className: 'detail-actions' }, el('a', { className: 'button', href: `add.html?id=${encodeURIComponent(id)}`, text: 'Edit this book' }));
+    info.append(actions); $('#bookDetail').replaceChildren(cover(book), info);
+    // A failed session check must not prevent public browsing.
     try {
-        // Get book ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const bookId = urlParams.get('id'); // changed from "index"
-        
-        if (!bookId) {
-            showError('No book specified');
-            return;
-        }
-        
-        // Load all books
-        const response = await fetch('books.json');
-        if (!response.ok) {
-            throw new Error('Failed to load books');
-        }
-        let allBooks = await response.json();
-
-        // Assign unique ID if it doesn't exist (matches gallery.js behavior)
-        allBooks = allBooks.map((book, i) => ({
-            ...book,
-            _id: book._id ?? `book-${i+1}`
-        }));
-
-        // Find book by _id
-        const book = allBooks.find(b => b._id === bookId);
-        if (!book) {
-            showError('Book not found');
-            return;
-        }
-
-        displayBookDetail(book);
-
-    } catch (error) {
-        console.error('Error loading book detail:', error);
-        showError('Failed to load book details');
-    }
+      const session = await api('session');
+      if (session.authenticated) {
+        const remove = el('button', { className: 'secondary', text: 'Remove from shelf' });
+        remove.addEventListener('click', async () => {
+          if (!confirm(`Remove “${book.title}” from the bookshelf?`)) return;
+          remove.disabled = true;
+          try { await api('books', { method: 'DELETE', body: { _id: id, version: book.version } }); location.href = 'index.html'; }
+          catch (error) { message($('#detailMessage'), error.message, 'error'); remove.disabled = false; }
+        });
+        actions.append(remove);
+      }
+    } catch { /* Editing link still leads to the sign-in page. */ }
+  } catch (error) { $('#bookDetail').replaceChildren(el('div', { className: 'notice error', text: error.message })); }
 }
-
-function displayBookDetail(book) {
-    const container = document.getElementById('bookDetail');
-    
-    const coverImage = book.coverURL 
-        ? book.coverURL.replace('http://', 'https://')
-        : null;
-    
-    container.innerHTML = `
-        <div class="book-detail">
-            <div class="book-detail-cover">
-                ${coverImage ? 
-                    `<img src="${escapeHtml(coverImage)}" alt="${escapeHtml(book.title)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-cover\\'>${escapeHtml(book.title)}</div>';">` :
-                    `<div class="no-cover">${escapeHtml(book.title)}</div>`
-                }
-            </div>
-            <div class="book-detail-info">
-                <h1>${escapeHtml(book.title)}</h1>
-                <h2 class="book-detail-author">${escapeHtml(book.author || 'Unknown Author')}</h2>
-                
-                <div class="book-detail-meta">
-                    ${book['published year'] || book.published_year ? `<div class="meta-item"><strong>Published:</strong> ${book['published year'] ?? book.published_year}</div>` : ''}
-                    ${book.genre ? `<div class="meta-item"><strong>Genre:</strong> ${book.genre}</div>` : ''}
-                    ${book['year read'] || book.year_read ? `<div class="meta-item"><strong>Year Read:</strong> ${book['year read'] ?? book.year_read}</div>` : ''}
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function showError(message) {
-    const container = document.getElementById('bookDetail');
-    container.innerHTML = `
-        <div class="empty-state">
-            <h2>${escapeHtml(message)}</h2>
-            <p><a href="index.html">Return to Gallery</a></p>
-        </div>
-    `;
-}
-
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-// Load book detail when page loads
-document.addEventListener('DOMContentLoaded', loadBookDetail);
+load();

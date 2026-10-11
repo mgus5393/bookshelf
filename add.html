@@ -1,41 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Book - Bookshelf</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <h1>📚 Bookshelf</h1>
-        <nav>
-            <a href="index.html">Gallery</a>
-            <a href="add.html">Add Book</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="search-container">
-            <h2 style="margin-bottom: 1rem;">Add a New Book</h2>
-            <p style="margin-bottom: 1.5rem; color: #666;">Search for books using the Google Books API</p>
-            
-            <div class="search-box">
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    placeholder="Search for a book by title, author, or ISBN..."
-                    autocomplete="off"
-                >
-                <button id="searchBtn">Search</button>
-            </div>
-
-            <div id="searchResults">
-                <!-- Search results will appear here -->
-            </div>
-        </div>
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+  <title>Add a book · The Bookshelf</title><link rel="stylesheet" href="css/styles.css"><script type="module" src="js/add-book.js"></script>
+</head><body>
+  <header class="site-header"><a class="brand" href="index.html"><span aria-hidden="true">▥</span> The Bookshelf</a><nav aria-label="Main"><a href="index.html">The collection</a><a aria-current="page" href="add.html">Add a book</a></nav></header>
+  <main class="container narrow">
+    <p class="eyebrow">Make room on the shelf</p><h1 id="pageTitle">What did you read?</h1><p class="lede" id="pageIntro">Find a book, check the details, and add it to your collection.</p>
+    <section class="panel" id="loginPanel" aria-labelledby="unlockTitle" hidden><h2 id="unlockTitle">Your bookshelf, your stories.</h2><p>Enter your editing password. This browser will stay unlocked for 30 days.</p><form id="loginForm"><label for="password">Editing password</label><div class="inline-form"><input id="password" type="password" autocomplete="current-password" required maxlength="512"><button id="unlockBtn">Unlock</button></div></form><p class="notice" id="loginMessage" role="status" aria-live="polite"></p></section>
+    <p id="sessionMessage" class="notice" role="status">Checking your bookshelf…</p>
+    <div id="editor" hidden>
+      <div class="editor-toolbar"><span class="muted">Unlocked on this browser</span><button id="lockBtn" class="text-button">Lock editing</button></div>
+      <section class="panel" id="searchPanel" aria-labelledby="searchTitle"><h2 id="searchTitle">Find your next addition</h2><form id="searchForm"><label for="searchInput">Title, author, or ISBN</label><div class="inline-form"><input id="searchInput" type="search" placeholder="e.g. The Wedding People" minlength="2" maxlength="200" required><button id="searchBtn">Search</button></div></form><p class="muted">Or <button type="button" class="text-button" id="manualBtn">enter a book by hand</button>.</p><p id="searchStatus" role="status" aria-live="polite"></p><div id="searchResults" class="search-results"></div></section>
+      <section class="panel" id="bookPanel" aria-labelledby="formTitle"><h2 id="formTitle">Book details</h2><p class="muted">Only the title and author are required. Everything can be corrected later.</p>
+        <form id="bookForm">
+          <div class="form-grid"><label class="full">Title<input name="title" id="title" required maxlength="300"></label><label class="full">Author<input name="author" required maxlength="300"></label><label>Year read<input name="year_read" type="number" min="1000" max="9999" step="1" inputmode="numeric"></label><label>Year published<input name="published_year" type="number" min="1" max="9999" step="1" inputmode="numeric"></label><label class="full">Genre<input name="genre" maxlength="120" placeholder="e.g. Fiction"></label><label class="full">Cover image URL <span class="optional">(optional)</span><input name="coverURL" type="url" maxlength="2048" placeholder="https://…"></label><label class="full">A little note <span class="optional">(visible to visitors)</span><textarea name="notes" rows="3" maxlength="5000" placeholder="What will you remember about this one?"></textarea></label></div>
+          <div class="form-actions"><button id="saveBtn">Add to bookshelf</button><a href="index.html" class="text-button">Back to collection</a></div>
+          <p id="saveMessage" class="notice" role="status" aria-live="polite"></p>
+        </form>
+      </section>
     </div>
+  </main><footer>A shelf of stories, always growing.</footer>
+</body></html>
 
-    <script src="js/add-book.js"></script>
-</body>
-</html>

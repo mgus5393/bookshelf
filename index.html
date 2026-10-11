@@ -1,48 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookshelf Gallery</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#344b3f">
+  <title>The Bookshelf</title><link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/gallery.js"></script>
 </head>
 <body>
-    <header>
-        <h1>📚 Bookshelf</h1>
-        <nav>
-            <a href="index.html">Gallery</a>
-            <a href="add.html">Add Book</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <h2 style="margin-bottom: 1rem;">Books Read</h2>
-        
-        <!-- Search and Filters -->
-        <div class="filters-container">
-            <div class="search-box-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search books by title or author...">
-            </div>
-            <div class="filter-controls">
-                <select id="yearFilter" class="filter-select">
-                    <option value="">All Years</option>
-                </select>
-                <select id="genreFilter" class="filter-select">
-                    <option value="">All Genres</option>
-                </select>
-                <button id="clearFilters" class="clear-filters-btn">Clear Filters</button>
-            </div>
-        </div>
-        
-        <div id="resultsCount" class="results-count"></div>
-        
-        <div class="books-grid" id="booksGrid">
-            <!-- Books will be loaded here -->
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase.js"></script>
-    <script src="js/gallery.js"></script>
-</body>
-</html>
+  <header class="site-header"><a class="brand" href="index.html"><span aria-hidden="true">▥</span> The Bookshelf</a><nav aria-label="Main"><a aria-current="page" href="index.html">The collection</a><a class="button small" href="add.html">+ Add a book</a></nav></header>
+  <main class="container">
+    <section class="intro"><p class="eyebrow">A life in books</p><h1>One more chapter.</h1><p>A little home for the books read, loved, and remembered.</p></section>
+    <section class="collection" aria-label="Book collection">
+      <div class="collection-heading"><h2>The collection <span id="totalCount" class="count"></span></h2><button class="text-button" id="backupBtn" disabled>Download book list</button></div>
+      <div class="filters"><label class="search-label"><span class="sr-only">Search this collection</span><input id="searchInput" type="search" placeholder="Find a title or author…"></label><label><span class="sr-only">Year read</span><select id="yearFilter"><option value="">Every year</option></select></label><label><span class="sr-only">Genre</span><select id="genreFilter"><option value="">Every genre</option></select></label><button class="secondary" id="clearFilters">Clear</button></div>
+      <p id="resultsCount" class="muted" role="status" aria-live="polite"></p>
+      <div id="booksGrid" class="books-grid" aria-busy="true"><p class="notice">Opening the bookshelf…</p></div>
+    </section>
+  </main><footer>A shelf of stories, always growing.</footer>
+</body></html>

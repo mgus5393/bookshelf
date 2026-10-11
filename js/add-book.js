@@ -1,228 +1,108 @@
-const GOOGLE_BOOKS_API = 'https://www.googleapis.com/books/v1/volumes';
-
-let searchTimeout;
-
-// Handle search input
-document.getElementById('searchInput').addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    const query = e.target.value.trim();
-    
-    if (query.length < 2) {
-        document.getElementById('searchResults').innerHTML = '';
-        return;
-    }
-
-    searchTimeout = setTimeout(() => {
-        searchBooks(query);
-    }, 500);
-});
-
-// Handle search button click
-document.getElementById('searchBtn').addEventListener('click', () => {
-    const query = document.getElementById('searchInput').value.trim();
-    if (query) {
-        searchBooks(query);
-    }
-});
-
-// Search Google Books API
-async function searchBooks(query) {
-    const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = '<div class="loading">Searching...</div>';
-
-    try {
-        const response = await fetch(`${GOOGLE_BOOKS_API}?q=${encodeURIComponent(query)}&maxResults=20`);
-        if (!response.ok) {
-            throw new Error('Search failed');
-        }
-
-        const data = await response.json();
-        displaySearchResults(data.items || []);
-    } catch (error) {
-        console.error('Error searching books:', error);
-        resultsContainer.innerHTML = '<div class="error">Failed to search books. Please try again.</div>';
-    }
+import { $, el, api, cover, message, detailURL } from './common.js';
+const form = $('#bookForm');
+const editId = new URLSearchParams(location.search).get('id');
+let currentBook = null;
+let saveId = crypto.randomUUID();
+let dirty = false;
+let saving = false;
+let loaded = false;
+let searchController;
+const fields = ['title', 'author', 'year_read', 'published_year', 'genre', 'coverURL', 'notes'];
+function fill(book) { fields.forEach(key => { form.elements.namedItem(key).value = book[key] ?? ''; }); }
+function revealEditor() { $('#loginPanel').hidden = true; $('#editor').hidden = false; $('#sessionMessage').textContent = ''; }
+function requireLogin(text) {
+  $('#editor').hidden = true; $('#loginPanel').hidden = false;
+  message($('#loginMessage'), text || '');
 }
-
-// Store search results for event delegation
-let currentSearchResults = [];
-
-// Display search results
-function displaySearchResults(books) {
-    const resultsContainer = document.getElementById('searchResults');
-    currentSearchResults = books; // Store for event delegation
-
-    if (books.length === 0) {
-        resultsContainer.innerHTML = '<div class="empty-state"><h2>No books found</h2><p>Try a different search term.</p></div>';
-        return;
-    }
-
-    resultsContainer.innerHTML = books.map((book, index) => {
-        const volumeInfo = book.volumeInfo;
-        const coverImage = volumeInfo.imageLinks?.thumbnail || volumeInfo.imageLinks?.smallThumbnail || '';
-        const title = volumeInfo.title || 'Unknown Title';
-        const authors = volumeInfo.authors?.join(', ') || 'Unknown Author';
-        const description = volumeInfo.description || '';
-        const publishedDate = volumeInfo.publishedDate || '';
-        const publishedYear = publishedDate ? parseInt(publishedDate.substring(0, 4)) : null;
-        const genre = volumeInfo.categories?.[0] || 'Unknown Genre';
-
-        return `
-            <div class="search-result-item">
-                <img src="${coverImage || ''}" alt="${escapeHtml(title)}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22150%22%3E%3Crect fill=%22%23667eea%22 width=%22100%22 height=%22150%22/%3E%3Ctext fill=%22white%22 font-size=%2212%22 x=%2250%22 y=%2275%22 text-anchor=%22middle%22%3E${escapeHtml(title.substring(0, 20))}%3C/text%3E%3C/svg%3E';">
-                <div class="search-result-info">
-                    <h3>${escapeHtml(title)}</h3>
-                    <p><strong>Author:</strong> ${escapeHtml(authors)}</p>
-                    ${publishedYear ? `<p><strong>Published:</strong> ${publishedYear}</p>` : ''}
-                    ${genre ? `<p><strong>Genre:</strong> ${escapeHtml(genre)}</p>` : ''}
-                    ${description ? `<p>${escapeHtml(description.substring(0, 150))}...</p>` : ''}
-                    <button class="add-book-btn" data-book-index="${index}">
-                        Add Book
-                    </button>
-                </div>
-            </div>
-        `;
-    }).join('');
-
-    // Add event listeners to all add buttons using event delegation
-    resultsContainer.querySelectorAll('.add-book-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const index = parseInt(e.target.getAttribute('data-book-index'));
-            const book = currentSearchResults[index];
-            const volumeInfo = book.volumeInfo;
-            const coverImage = volumeInfo.imageLinks?.thumbnail || volumeInfo.imageLinks?.smallThumbnail || '';
-            const publishedDate = volumeInfo.publishedDate || '';
-            const publishedYear = publishedDate ? parseInt(publishedDate.substring(0, 4)) : null;
-            const genre = volumeInfo.categories?.[0] || 'Unknown Genre';
-            
-            const bookData = {
-                title: volumeInfo.title || 'Unknown Title',
-                author: volumeInfo.authors?.join(', ') || 'Unknown Author',
-                coverURL: coverImage.replace('http://', 'https://'),
-                published_year: publishedYear,
-                genre: genre
-            };
-            
-            addBook(bookData);
-        });
+async function initializeEditor() {
+  if (loaded) return;
+  if (editId) {
+    const { books } = await api('books');
+    currentBook = books.find(b => b._id === editId);
+    if (!currentBook) throw new Error('This book could not be found. Return to the collection and choose a book.');
+    $('#pageTitle').textContent = 'A little revision.';
+    $('#pageIntro').textContent = 'Update the details, then save them to your bookshelf.';
+    $('#searchPanel').hidden = true;
+    $('#saveBtn').textContent = 'Save changes';
+    document.title = 'Edit a book · The Bookshelf';
+    fill(currentBook);
+  } else fill({ year_read: new Date().getFullYear() });
+  loaded = true;
+}
+async function start() {
+  try {
+    const session = await api('session');
+    if (!session.configured) { message($('#sessionMessage'), 'The shelf is open for browsing. Editing needs a one-time setup by the site owner.'); return; }
+    if (!session.authenticated) { $('#sessionMessage').textContent = ''; requireLogin(); return; }
+    await initializeEditor(); revealEditor();
+  } catch (error) { message($('#sessionMessage'), error.message, 'error'); }
+}
+$('#loginForm').addEventListener('submit', async event => {
+  event.preventDefault(); $('#unlockBtn').disabled = true;
+  try {
+    await api('session', { method: 'POST', body: { password: $('#password').value } });
+    $('#password').value = '';
+    await initializeEditor(); revealEditor();
+  } catch (error) { message($('#loginMessage'), error.message, 'error'); }
+  finally { $('#unlockBtn').disabled = false; }
+});
+$('#lockBtn').addEventListener('click', async () => {
+  if (dirty && !confirm('Lock editing? Your unsaved details will stay in this tab.')) return;
+  try { await api('session', { method: 'DELETE' }); requireLogin('Editing is locked.'); }
+  catch (error) { message($('#saveMessage'), error.message, 'error'); }
+});
+$('#manualBtn').addEventListener('click', () => { $('#bookPanel').scrollIntoView({ block: 'start' }); $('#title').focus(); });
+$('#searchForm').addEventListener('submit', async event => {
+  event.preventDefault(); searchController?.abort();
+  searchController = new AbortController();
+  const controller = searchController;
+  $('#searchBtn').disabled = true; $('#searchResults').replaceChildren();
+  $('#searchStatus').textContent = 'Looking through the catalog…';
+  try {
+    const data = await api(`search?q=${encodeURIComponent($('#searchInput').value.trim())}`, { signal: controller.signal });
+    if (controller.signal.aborted) return;
+    $('#searchStatus').textContent = data.books.length ? `Results from ${data.source}. Choose a book to fill in its details.` : 'No match this time. Try another search, or enter the details below.';
+    data.books.forEach(book => {
+      const choose = el('button', { type: 'button', text: 'Choose this book' });
+      choose.addEventListener('click', () => {
+        if (dirty && !confirm('Replace the current book details with this search result?')) return;
+        fill({ ...book, year_read: form.elements.namedItem('year_read').value || new Date().getFullYear() });
+        saveId = crypto.randomUUID(); dirty = true;
+        message($('#saveMessage'), 'Details filled in. Check the title and author, then save.');
+        $('#bookPanel').scrollIntoView({ block: 'start' }); $('#title').focus();
+      });
+      $('#searchResults').append(el('article', { className: 'search-result' }, cover(book),
+        el('div', { className: 'search-result-info' }, el('h3', { text: book.title }), el('p', { text: `${book.author || 'Author not listed'}${book.published_year ? ` · ${book.published_year}` : ''}` }), choose)));
     });
-}
-
-// Add book to collection
-// async function addBook(bookData) {
-//     // Get year read from user
-//     const currentYear = new Date().getFullYear();
-//     const yearRead = prompt(`Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`, 
-//         currentYear.toString());
-    
-//     if (yearRead === null) {
-//         return; // User cancelled
-//     }
-
-//     const bookToSave = {
-//         ...bookData,
-//         year_read: yearRead && yearRead.trim() ? yearRead.trim() : ''
-//     };
-
-//     try {
-//         const response = await fetch('/.netlify/functions/save-book', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(bookToSave)
-//         });
-
-//         const result = await response.json();
-
-//         if (response.ok) {
-//             showMessage('Book added successfully!', 'success');
-//             // Clear search after a moment
-//             setTimeout(() => {
-//                 document.getElementById('searchInput').value = '';
-//                 document.getElementById('searchResults').innerHTML = '';
-//             }, 2000);
-//         } else {
-//             throw new Error(result.error || 'Failed to save book');
-//         }
-//     } catch (error) {
-//         console.error('Error adding book:', error);
-//         showMessage(`Error: ${error.message}`, 'error');
-//     }
-// }
-
-async function addBook(bookData) {
-
-    const currentYear = new Date().getFullYear();
-
-    const yearRead = prompt(
-        `Enter the year you finished reading this book (YYYY) or leave blank:\n\nCurrent year: ${currentYear}`,
-        currentYear.toString()
-    );
-
-    if (yearRead === null) return; // User cancelled
-
-    try {
-
-        // Get the current highest order number
-        const { data: existingBooks, error: fetchError } = await supabase
-            .from('books')
-            .select('order')
-            .order('order', { ascending: false })
-            .limit(1);
-
-        if (fetchError) throw fetchError;
-
-        const nextOrder = existingBooks.length ? existingBooks[0].order + 1 : 1;
-
-        // Insert the new book
-        const { error: insertError } = await supabase
-            .from('books')
-            .insert([
-                {
-                    title: bookData.title,
-                    author: bookData.author,
-                    cover_url: bookData.coverURL,
-                    published_year: bookData.published_year,
-                    genre: bookData.genre,
-                    year_read: yearRead && yearRead.trim() ? parseInt(yearRead) : null,
-                    order: nextOrder
-                }
-            ]);
-
-        if (insertError) throw insertError;
-
-        showMessage('Book added successfully!', 'success');
-
-        // Clear search UI
-        setTimeout(() => {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchResults').innerHTML = '';
-        }, 1500);
-
-    } catch (error) {
-        console.error('Error adding book:', error);
-        showMessage(`Error adding book`, 'error');
+  } catch (error) {
+    if (error.name === 'AbortError') return;
+    $('#searchStatus').textContent = error.message;
+    if (error.status === 401) requireLogin(error.message);
+  } finally { if (searchController === controller) $('#searchBtn').disabled = false; }
+});
+form.addEventListener('input', () => { dirty = true; });
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (saving) return;
+  saving = true; $('#saveBtn').disabled = true; $('#editor').inert = true;
+  const body = Object.fromEntries(new FormData(form));
+  body._id = editId || saveId;
+  if (editId) body.version = currentBook.version;
+  message($('#saveMessage'), 'Saving to your bookshelf…');
+  try {
+    const { book } = await api('books', { method: editId ? 'PUT' : 'POST', body });
+    dirty = false;
+    message($('#saveMessage'), editId ? 'Changes saved. ' : 'Added to your bookshelf. ', 'success');
+    $('#saveMessage').append(el('a', { href: detailURL(book), text: 'View your book →' }));
+    if (editId) currentBook = book;
+    else {
+      form.reset(); fill({ year_read: new Date().getFullYear() }); saveId = crypto.randomUUID();
+      $('#searchResults').replaceChildren(); $('#searchStatus').textContent = ''; $('#searchInput').value = '';
     }
-}
-
-function showMessage(message, type) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = type;
-    messageDiv.textContent = message;
-    
-    const container = document.querySelector('.search-container');
-    const firstChild = container.firstElementChild;
-    container.insertBefore(messageDiv, firstChild);
-    
-    setTimeout(() => {
-        messageDiv.remove();
-    }, 5000);
-}
-
-function escapeHtml(text) {
-    if (typeof text !== 'string') return text;
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+  } catch (error) {
+    message($('#saveMessage'), `${error.message} Your details have been kept in this tab.`, 'error');
+    if (error.status === 401) requireLogin(error.message);
+  } finally { saving = false; $('#saveBtn').disabled = false; $('#editor').inert = false; }
+});
+window.addEventListener('beforeunload', event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
+start();

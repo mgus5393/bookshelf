@@ -1,75 +1,39 @@
-# Testing Guide
+# Verification
 
-## Quick Local Test (Before Netlify)
+Run `node --test tests/*.test.mjs` after installing the dependency. The suite covers:
 
-### Option 1: Python HTTP Server
-```bash
-# Python 3
-python -m http.server 8000
+- All 178 original books and stable IDs, including mixed legacy field names.
+- Public reading, authenticated mutations, wrong passwords, tampered/expired
+  cookies, password rotation, missing configuration, and cross-origin rejection.
+- Add/read/edit/remove; no duplicate records on retries; intentional rereads in
+  another year; stale-edit conflicts and simultaneous first-save races.
+- Invalid input and storage outages, without silently resetting the collection.
+- Catalog fallback and manual saving during search outages.
+- Actual Netlify Blobs SDK read/write/conditional-update behavior against its local
+  storage server (not just a mocked store).
 
-# Python 2
-python -m SimpleHTTPServer 8000
-```
-Then open: http://localhost:8000
+`node scripts/build.mjs` produces `dist/` and deployment-context metadata. On
+Netlify, Production selects `bookshelf-v1`; previews use isolated stores.
 
-### Option 2: Node.js HTTP Server
-```bash
-npx http-server -p 8000
-```
-Then open: http://localhost:8000
+## Browser checks
 
-### Option 3: VS Code Live Server
-- Install "Live Server" extension
-- Right-click on `index.html` → "Open with Live Server"
+Use `node scripts/dev.mjs`; test data lives only under `.local-data/`.
 
-## What to Test
+1. Gallery loads the original books; title/author, year, and genre filters combine.
+2. Open a filtered book and verify the correct details, not a positional index.
+3. Unlock editing. Add a book manually, follow its detail link, edit its note,
+   and verify changes after refresh. Check a second browser with no login.
+4. Search, select a catalog result, review fields, and add. If catalog requests
+   are blocked/unavailable, verify the manual-entry route and helpful message.
+5. Failed saves retain fields; unauthorized saves return to unlock without losing
+   the form. Locking hides editing. Visitors cannot mutate through direct API calls.
+6. Verify narrow/mobile layouts and keyboard-accessible labels/buttons.
+7. Download the JSON backup and verify it includes new edits.
 
-### 1. Gallery Page (index.html)
-- ✅ Should load and display all books from `books.json`
-- ✅ Books should show covers, titles, authors
-- ✅ Books with `year_read` / `year read` should show "Read: [year]"
-- ✅ Newest books (highest `order`) should appear first
-- ✅ Clicking a book should show a full detail page
-- ✅ Should be responsive on mobile
+## Production-only verification
 
-### 2. Add Book Page (add.html)
-- ✅ Search box should work (try searching for "Harry Potter")
-- ✅ Results should show book covers and details
-- ✅ Clicking "Add Book" should prompt for:
-  - Year read (YYYY format, optional)
-- ✅ After adding, should show success message
-
-### 3. Netlify Function Test
-**Important:** The add book function will only work on Netlify (not locally)
-
-To test the function:
-1. Deploy to Netlify
-2. Make sure environment variables are set:
-   - `GITHUB_TOKEN` - Your GitHub personal access token
-   - `GITHUB_OWNER` - Your GitHub username
-   - `GITHUB_REPO` - Repository name (e.g., "bookshelf")
-3. Try adding a book from the deployed site
-4. Check GitHub repo to see if `books.json` was updated
-
-## Common Issues
-
-### Gallery not loading books
-- Check browser console for errors (F12)
-- Verify `books.json` is in the root directory
-- Check that the JSON is valid (no syntax errors)
-
-### Add book not working
-- Check Netlify function logs (Netlify dashboard → Functions)
-- Verify environment variables are set correctly
-- Check that GitHub token has `repo` permissions
-- Verify repository name matches exactly (case-sensitive)
-
-### CORS errors
-- This is normal when testing locally
-- Netlify Functions should work fine on deployed site
-
-## Next Steps After Testing
-
-1. If gallery works locally → Deploy to Netlify
-2. If add book works on Netlify → You're all set!
-3. If issues → Check Netlify function logs and browser console
+Local tests cannot verify account configuration, current billing plan, production
+storage permissions, Netlify's applied rate limits, HTTPS cookies, or whether the
+old remote database has extra books. Follow the deployment checklist in README.
+After first deployment, add/edit from one device and browse from another, then
+redeploy and confirm the changes persist. Keep a backup before any migration.
